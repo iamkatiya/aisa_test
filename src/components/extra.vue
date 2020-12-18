@@ -1,31 +1,31 @@
 <template>
-    <section class="extra container">
-        <div class="extra__additional additional">
-            <div class="additional__image">
-                <img src="https://cdn.pixabay.com/photo/2015/07/10/17/27/sparkler-839831_1280.jpg">
-            </div>
-            <div class="additional__content">
-                <b>Дополнительные преимущества</b>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                    <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-                    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</li>
-                    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</li>
-                </ul>
-            </div>
-        </div>
-        <div class="extra__reviews review">
-            <div class="review__image">
-                <img src="https://cdn.pixabay.com/photo/2018/12/13/14/24/fair-3872942_1280.jpg">
-            </div>
-            <div class="review__content">
-                <b>Отзывы</b>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
-    </section>
+  <section class="extra container">
+    <div class="extra__additional additional">
+      <div class="additional__image">
+        <img src="https://cdn.pixabay.com/photo/2015/07/10/17/27/sparkler-839831_1280.jpg">
+      </div>
+      <div class="additional__content">
+        <b>Дополнительные преимущества</b>
+        <ul>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+          <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+          <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</li>
+          <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</li>
+        </ul>
+      </div>
+    </div>
+    <div class="extra__reviews review">
+      <div class="review__image">
+        <img src="https://cdn.pixabay.com/photo/2018/12/13/14/24/fair-3872942_1280.jpg">
+      </div>
+      <div class="review__content">
+        <b>Отзывы</b>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style lang="scss">

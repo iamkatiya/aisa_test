@@ -1,39 +1,59 @@
 <template>
-    <header class="header">
+  <header class="header">
+    <div class="container">
+      <div class="header__logo logotype">
+        <img src="@/assets/logo.svg">
+        <h1>Wonder site</h1>
+      </div>
+      <div class="header__nav">
+        <router-link :to="'#'">
+          Главная
+        </router-link>
+        <router-link :to="'/about'">
+          О компании
+        </router-link>
+        <router-link :to="'/services'">
+          Услуги
+        </router-link>
+        <router-link :to="'#'">
+          Цены
+        </router-link>
+        <router-link :to="'/reviews'">
+          Отзывы
+        </router-link>
+      </div>
+      <div
+        class="header__burger"
+        @click="burgerMenu =! burgerMenu"
+      >
+        <img src="@/assets/burger.svg">
+      </div>
+    </div>
+    <transition name="modal-fade">
+      <div
+        v-if="burgerMenu"
+        class="header-nav__mobile"
+      >
         <div class="container">
-            <div class="header__logo logotype">
-                <img src="@/assets/logo.svg">
-                <h1>Wonder site</h1>
-            </div>
-            <div class="header__nav">
-                <router-link :to="'#'">Главная</router-link>
-                <router-link :to="'/about'">О компании</router-link>
-                <router-link :to="'/services'">Услуги</router-link>
-                <router-link :to="'#'">Цены</router-link>
-                <router-link :to="'/reviews'">Отзывы</router-link>
-            </div>
-            <div
-                class="header__burger"
-                @click="burgerMenu =! burgerMenu"
-            >
-                <img src="@/assets/burger.svg">
-            </div>
+          <router-link :to="'#'">
+            Главная
+          </router-link>
+          <router-link :to="'/about'">
+            О компании
+          </router-link>
+          <router-link :to="'/services'">
+            Услуги
+          </router-link>
+          <router-link :to="'#'">
+            Цены
+          </router-link>
+          <router-link :to="'/reviews'">
+            Отзывы
+          </router-link>
         </div>
-        <transition name="modal-fade">
-            <div
-                v-if="burgerMenu"
-                class="header-nav__mobile"
-            >
-                <div class="container">
-                    <router-link :to="'#'">Главная</router-link>
-                    <router-link :to="'/about'">О компании</router-link>
-                    <router-link :to="'/services'">Услуги</router-link>
-                    <router-link :to="'#'">Цены</router-link>
-                    <router-link :to="'/reviews'">Отзывы</router-link>
-                </div>
-            </div>
-        </transition>
-    </header>
+      </div>
+    </transition>
+  </header>
 </template>
 
 <script>

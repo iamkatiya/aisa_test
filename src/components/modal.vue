@@ -1,23 +1,26 @@
 <template>
-    <transition name="modal-fade">
-        <div class="modal">
-            <div class="modal__window modal-content">
-                <div class="modal-content__text">
-                    Вы открыли модальное окно!
-                </div>
-                <div
-                    class="modal-content__close"
-                    @click="close"
-                    >
-                    <img class="modal-content__close" src="../assets/close.svg">
-                </div>
-            </div>
+  <transition name="modal-fade">
+    <div class="modal">
+      <div class="modal__window modal-content">
+        <div class="modal-content__text">
+          Вы открыли модальное окно!
         </div>
-    </transition>
+        <div
+          class="modal-content__close"
+          @click="close"
+        >
+          <img
+            class="modal-content__close"
+            src="../assets/close.svg"
+          >
+        </div>
+      </div>
+    </div>
+  </transition>
 </template>
 <script>
   export default {
-    name: 'modal',
+    name: 'Modal',
     methods: {
       close() {
         this.$emit('close');

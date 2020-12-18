@@ -1,21 +1,33 @@
 <template>
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__logo logotype">
-                <img src="../assets/logo.svg">
-                <h1>Wonder site</h1>
-            </div>
-            <div class="footer__nav contacts">
-                <div class="contacts__head">Наш адрес:</div>
-                <div class="contacts__info">г. Москва, ул. Ижевская, д.38</div>
-            </div>
-            <div class="footer__nav contacts">
-                <div class="contacts__head">Контакты:</div>
-                <a href="#" class="contacts__info">Телефон: +7 (888) 123 45 67</a>
-                <a href="#" class="contacts__info">Telegram: @example</a>
-            </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__logo logotype">
+        <img src="../assets/logo.svg">
+        <h1>Wonder site</h1>
+      </div>
+      <div class="footer__nav contacts">
+        <div class="contacts__head">
+          Наш адрес:
         </div>
-    </footer>
+        <div class="contacts__info">
+          г. Москва, ул. Ижевская, д.38
+        </div>
+      </div>
+      <div class="footer__nav contacts">
+        <div class="contacts__head">
+          Контакты:
+        </div>
+        <a
+          href="#"
+          class="contacts__info"
+        >Телефон: +7 (888) 123 45 67</a>
+        <a
+          href="#"
+          class="contacts__info"
+        >Telegram: @example</a>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <style lang="scss">

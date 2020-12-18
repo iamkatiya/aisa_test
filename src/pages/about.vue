@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <header-nav/>
-        <about-banner/>
-        <about-content/>
-        <extra/>
-        <footer-nav/>
-    </div>
+  <div>
+    <header-nav />
+    <about-banner />
+    <about-content />
+    <extra />
+    <footer-nav />
+  </div>
 </template>
 
 <script>

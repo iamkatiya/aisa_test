@@ -1,11 +1,11 @@
 <template>
-   <div>
-       <header-nav/>
-       <banner/>
-       <router-view />
-       <extra/>
-       <footer-nav/>
-   </div>
+  <div>
+    <header-nav />
+    <banner />
+    <router-view />
+    <extra />
+    <footer-nav />
+  </div>
 </template>
 
 <script>

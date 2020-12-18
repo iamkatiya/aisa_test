@@ -1,11 +1,11 @@
 <template>
-    <section class="about-banner">
-        <div class="container">
-            <h1 class="about-banner__head">
-                О нашей компании
-            </h1>
-        </div>
-    </section>
+  <section class="about-banner">
+    <div class="container">
+      <h1 class="about-banner__head">
+        О нашей компании
+      </h1>
+    </div>
+  </section>
 </template>
 
 <style lang="scss">

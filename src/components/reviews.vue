@@ -1,53 +1,59 @@
 <template>
-    <div>
-        <section class="reviews-banner">
-            <div class="container">
-                <h1 class="reviews-banner__head">
-                    Отзывы клиентов
-                </h1>
-            </div>
-        </section>
-        <section class="reviews-list container">
-            <carousel class="reviews-list__carousel" :items="3" :dots="false" :nav="false" :autoplay="true">
-                <div class="reviews-list__item">
-                    <div class="reviews-list__item__head">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
-                        <p>Иван И.</p>
-                    </div>
-                    <div class="reviews-list__item__text">
-                        Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
-                    </div>
-                </div>
-                <div class="reviews-list__item">
-                    <div class="reviews-list__item__head">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
-                        <p>Иван И.</p>
-                    </div>
-                    <div class="reviews-list__item__text">
-                        Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
-                    </div>
-                </div>
-                <div class="reviews-list__item">
-                    <div class="reviews-list__item__head">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
-                        <p>Иван И.</p>
-                    </div>
-                    <div class="reviews-list__item__text">
-                        Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
-                    </div>
-                </div>
-                <div class="reviews-list__item">
-                    <div class="reviews-list__item__head">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
-                        <p>Иван И.</p>
-                    </div>
-                    <div class="reviews-list__item__text">
-                        Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
-                    </div>
-                </div>
-            </carousel>
-        </section>
-    </div>
+  <div>
+    <section class="reviews-banner">
+      <div class="container">
+        <h1 class="reviews-banner__head">
+          Отзывы клиентов
+        </h1>
+      </div>
+    </section>
+    <section class="reviews-list container">
+      <carousel
+        class="reviews-list__carousel"
+        :items="3"
+        :dots="false"
+        :nav="false"
+        :autoplay="true"
+      >
+        <div class="reviews-list__item">
+          <div class="reviews-list__item__head">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <p>Иван И.</p>
+          </div>
+          <div class="reviews-list__item__text">
+            Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
+          </div>
+        </div>
+        <div class="reviews-list__item">
+          <div class="reviews-list__item__head">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <p>Иван И.</p>
+          </div>
+          <div class="reviews-list__item__text">
+            Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
+          </div>
+        </div>
+        <div class="reviews-list__item">
+          <div class="reviews-list__item__head">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <p>Иван И.</p>
+          </div>
+          <div class="reviews-list__item__text">
+            Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
+          </div>
+        </div>
+        <div class="reviews-list__item">
+          <div class="reviews-list__item__head">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <p>Иван И.</p>
+          </div>
+          <div class="reviews-list__item__text">
+            Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
+          </div>
+        </div>
+      </carousel>
+    </section>
+  </div>
 </template>
 
 <style lang="scss">
