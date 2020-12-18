@@ -11,7 +11,7 @@
         >
           <img
             class="modal-content__close"
-            src="../assets/close.svg"
+            src="@/assets/close.svg"
           >
         </div>
       </div>

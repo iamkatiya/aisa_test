@@ -28,7 +28,10 @@
       >
         <img src="@/assets/burger.svg">
       </div>
-      <div class="header__button">
+      <div
+        class="header__button"
+        @click="feedback = true"
+      >
         Связаться
       </div>
     </div>
@@ -58,6 +61,7 @@
     </transition>
     <transition name="modal-fade">
       <div
+        v-if="feedback"
         class="feedback-form"
       >
         <div class="feedback-form__window">
@@ -143,6 +147,15 @@
           >
             Отправить обращение
           </button>
+          <div
+            class="modal-content__close"
+            @click="feedback = false"
+          >
+            <img
+              class="modal-content__close"
+              src="@/assets/close.svg"
+            >
+          </div>
         </div>
       </div>
     </transition>
@@ -153,6 +166,7 @@
   export default {
     data() {
       return {
+        feedback: false,
         burgerMenu: false,
         handling: {
           name: '',
@@ -167,6 +181,7 @@
     methods: {
       sendHandling () {
         console.log(this.handling)
+        this.feedback = false
       },
       signalChange (evt) {
         this.handling.file = this.$refs.file.files[0]
@@ -281,6 +296,13 @@
         }
         &__radiobuttons {
             margin-top: 40px;
+        }
+        &-content__close {
+            position: absolute;
+            cursor: pointer;
+            width: 35px;
+            right: 10px;
+            top: 10px
         }
     }
     .custom-checkbox {
