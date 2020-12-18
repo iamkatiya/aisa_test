@@ -10,7 +10,7 @@
 
 <style lang="scss">
 .about-banner {
-    height: 50em;
+    height: 40em;
     padding-top: 10em;
     background-image: url("https://cdn.pixabay.com/photo/2018/12/26/22/12/christmas-background-3896551_1280.jpg");
     background-repeat: no-repeat;

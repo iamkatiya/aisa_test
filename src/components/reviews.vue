@@ -58,7 +58,7 @@
 
 <style lang="scss">
     .reviews-banner {
-        height: 50em;
+        height: 40em;
         padding-top: 10em;
         background-image: url("https://cdn.pixabay.com/photo/2019/12/03/07/34/gift-4669449_1280.jpg");
         background-repeat: no-repeat;

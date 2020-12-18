@@ -70,7 +70,7 @@
 
 <style lang="scss">
     .services-banner {
-        height: 50em;
+        height: 40em;
         padding-top: 10em;
         background-image: url("https://cdn.pixabay.com/photo/2017/12/25/19/27/pendant-3038987_1280.jpg");
         background-repeat: no-repeat;
