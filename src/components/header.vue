@@ -7,7 +7,7 @@
             </div>
             <div class="header__nav">
                 <a href="#">Главная</a>
-                <a href="#">О компании</a>
+                <a href="/about">О компании</a>
                 <a href="#">Услуги</a>
                 <a href="#">Цены</a>
                 <a href="#">Отзывы</a>

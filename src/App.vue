@@ -1,38 +1,24 @@
 <template>
   <div id="app">
-    <header-nav/>
-    <banner/>
-    <extra/>
-    <footer-nav/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import headerNav from './components/header.vue'
-import banner from './components/banner.vue'
-import extra from './components/extra.vue'
-import footerNav from './components/footer.vue'
-
-export default {
-  name: 'App',
-  components: {
-    headerNav,
-    banner,
-    extra,
-    footerNav
+  export default {
+    name: 'App'
   }
-}
 </script>
 
 <style>
 
   @font-face {
     font-family: "Oleo";
-    src: url("../src/fonts/Oleoscript.ttf") format("truetype");
+    src: url("./fonts/Oleoscript.ttf") format("truetype");
   }
   @font-face {
     font-family: "montserratligth";
-    src: url("../src/fonts/montserratligth.ttf") format("truetype");
+    src: url("./fonts/montserratligth.ttf") format("truetype");
   }
   #app {
     font-family: "montserratligth", sans-serif;
@@ -57,8 +43,8 @@ export default {
     align-items: center;
   }
   .logotype img {
-   width: 60px;
-   margin-right: 15px;
+    width: 60px;
+    margin-right: 15px;
   }
   .modal-fade-enter,
   .modal-fade-leave-active {
