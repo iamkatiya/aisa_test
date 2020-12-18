@@ -9,7 +9,7 @@
             </button>
         </div>
         <div class="banner__carousel">
-            <carousel items="1" :dots="false" :autoplay="true">
+            <carousel :items="1" :dots="false" :autoplay="true">
                 <div>
                     <img src="https://cdn.pixabay.com/photo/2018/07/18/18/53/new-years-eve-3547030_1280.jpg">
                 </div>
@@ -54,97 +54,101 @@
 
 </script>
 
-<style>
-    .banner__text {
-        flex: 45%;
-        width: 45%;
+<style lang="scss">
+    .banner {
+        &__text {
+            width: 45%;
+            padding-right: 2em;
+            box-sizing: border-box;
+        }
+        &__carousel {
+            width: 55%;
+            .owl-carousel.owl-loaded {
+                display: flex;
+                align-items: center;
+                height: 500px;
+            }
+            .owl-nav {
+                position: absolute;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .owl-item img {
+                height: 500px;
+                object-fit: cover;
+            }
+            .owl-theme .owl-nav [class*='owl-'], .banner__carousel .owl-theme .owl-nav [class*='owl-']:hover {
+                background-color: transparent;
+                color: transparent;
+                background-image: url("../assets/arrow.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                filter: invert(1);
+            }
+            .owl-nav .owl-prev {
+                transform: rotate(180deg);
+            }
+        }
     }
-    .banner__carousel {
-        flex: 55%;
-        width: 55%;
-    }
-    .banner__text {
-        padding-right: 40px;
-        box-sizing: border-box;
-    }
-    .about-content__head {
-        font-size: 40px;
-        margin-bottom: 20px;
-    }
-    .about-content__btn {
-        display: block;
-        padding: 15px 35px;
-        margin: 45px auto 0;
-        border: 1px solid white;
-        outline: none;
-        background: linear-gradient(to left, #5b7a97, #6a6aa6);
-        border-radius: 8px;
-        color: white;
-        font-family: 'montserratligth', sans-serif;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-    .about-content__btn:hover {
-        filter: hue-rotate(45deg);
-    }
-    .banner__carousel .owl-carousel.owl-loaded {
-        display: flex;
-        align-items: center;
-        height: 500px;
-    }
-    .banner__carousel .owl-nav {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-    .banner__carousel .owl-item img {
-        height: 500px;
-        object-fit: cover;
-    }
-    .banner__carousel .owl-theme .owl-nav [class*='owl-'], .banner__carousel .owl-theme .owl-nav [class*='owl-']:hover {
-        background-color: transparent;
-        color: transparent;
-        background-image: url("../assets/arrow.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        filter: invert(1);
-    }
-    .banner__carousel .owl-nav .owl-prev {
-        transform: rotate(180deg);
+    .about-content {
+        &__head {
+            font-size: 2.7em;
+            margin-bottom: 0.25em;
+        }
+        &__btn {
+            display: block;
+            padding: 15px 35px;
+            margin: 45px auto 0;
+            border: 1px solid white;
+            outline: none;
+            background: linear-gradient(to left, #5b7a97, #6a6aa6);
+            border-radius: 0.5em;
+            color: white;
+            font-family: 'montserratligth', sans-serif;
+            transition: 0.3s;
+            cursor: pointer;
+            &:hover {
+                filter: hue-rotate(45deg);
+            }
+        }
     }
     @media (max-width: 1500px) {
+        .banner {
+            &.container {
+                flex-wrap: wrap;
+            }
+            &__carousel {
+                width: 100%;
+                order: 1;
+            }
+            &__text {
+                width: 100%;
+                order: 2;
+                padding-right: 0;
+            }
+        }
+    }
+    @media (max-width: 991px) {
+        .banner {
+            .container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            &__text {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+    @media (max-width: 768px) {
         .banner__carousel {
-            flex: 100%;
-            width: 100%;
-            order: 1;
-        }
-        .banner.container {
-            flex-wrap: wrap;
-        }
-        .banner__text {
-            flex: 100%;
-            width: 100%;
-            order: 2;
-            padding-right: 0;
-        }
-    }
-    @media (max-width: 900px) {
-        .banner.container {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        .banner__text {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    }
-    @media (max-width: 700px) {
-        .banner__carousel .owl-carousel.owl-loaded {
-            height: 300px;
-        }
-        .banner__carousel .owl-item img {
-            height: 300px;
+            .owl-carousel.owl-loaded {
+                height: 300px;
+            }
+            .owl-item img {
+                height: 300px;
+            }
         }
     }
 </style>

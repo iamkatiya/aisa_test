@@ -9,13 +9,13 @@
     </section>
 </template>
 
-<style>
+<style lang="scss">
     .content {
         padding: 60px 0;
         flex-wrap: wrap;
-    }
-    .content__head {
-        font-size: 60px;
-        margin: 0 auto 50px;
+        &__head {
+             font-size: 4em;
+             margin: 0 auto 50px;
+         }
     }
 </style>

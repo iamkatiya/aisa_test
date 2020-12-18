@@ -8,16 +8,17 @@
     </section>
 </template>
 
-<style>
+<style lang="scss">
 .about-banner {
-    padding: 320px 0;
+    height: 50em;
+    padding-top: 10em;
     background-image: url("https://cdn.pixabay.com/photo/2018/12/26/22/12/christmas-background-3896551_1280.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
-.about-banner__head {
-    font-size: 80px;
-    color: white;
-    font-weight: 900;
+    &__head {
+        font-size: 5em;
+        color: white;
+        font-weight: 900;
+    }
 }
 </style>

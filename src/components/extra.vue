@@ -28,42 +28,45 @@
     </section>
 </template>
 
-<style>
+<style lang="scss">
     .extra {
-        margin-top: 60px;
-        margin-bottom: 60px;
+        margin-top: 4em;
+        margin-bottom: 4em;
+        &__additional {
+             display: flex;
+             width: 50%;
+             margin-right: 30px;
+        }
+        &__reviews {
+            display: flex;
+            width: 50%;
+            margin-left: 30px;
+        }
     }
-    .extra__additional {
-        display: flex;
-        flex: 50%;
-        width: 50%;
-        margin-right: 30px;
+    .additional,
+    .review {
+        &__image {
+            width: 300px;
+            height: 300px;
+            flex: 0 0 300px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &__content {
+            padding-left: 20px;
+            b {
+                font-size: 1.25em;
+                font-weight: bold;
+            }
+        }
     }
-    .extra__reviews {
-        display: flex;
-        flex: 50%;
-        width: 50%;
-        margin-left: 30px;
-    }
-    .additional__image, .review__image {
-        width: 300px;
-        height: 300px;
-        flex: 0 0 300px;
-    }
-    .additional__image img, .review__image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .additional__content, .review__content {
-        padding-left: 20px;
-    }
-    .additional__content b, .review__content b {
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .review__content p {
-        margin-top: 16px;
+    .review {
+        &__content p {
+            margin-top: 16px;
+        }
     }
     ul {
         list-style: none;
@@ -80,39 +83,39 @@
         margin-left: -1.5em;
     }
     @media (max-width: 1500px) {
-        .extra.container {
-            flex-wrap: wrap;
-        }
-        .extra__additional {
-            flex: 100%;
-            width: 100%;
-            margin-right: 0;
-            margin-bottom: 30px;
-        }
-        .extra__reviews {
-            flex: 100%;
-            width: 100%;
-            margin-left: 0;
+        .extra {
+            &.container {
+                flex-wrap: wrap;
+            }
+            &__additional {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            &__reviews {
+                width: 100%;
+                margin-left: 0;
+            }
         }
     }
-    @media (max-width: 950px) {
-        .additional, .review {
+    @media (max-width: 991px) {
+        .additional,
+        .review {
             flex-wrap: wrap;
-        }
-        .additional__image, .review__image {
-            margin: 0 auto 20px;
-            width: 280px;
-            height: 280px;
-            flex: 0 0 280px;
-        }
-        .additional__content, .review__content {
-           flex: 100%;
-            width: 100%;
-            padding-left: 0;
-        }
-        .additional__content b, .review__content b {
-            display: block;
-            text-align: center;
+            &__image {
+                margin: 0 auto 20px;
+                width: 280px;
+                height: 280px;
+                flex: 0 0 280px;
+            }
+            &__content {
+                width: 100%;
+                padding-left: 0;
+                b {
+                    display: block;
+                    text-align: center;
+                }
+            }
         }
     }
 </style>

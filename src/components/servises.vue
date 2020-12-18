@@ -56,57 +56,58 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
     .services-banner {
-        padding: 320px 0;
+        height: 50em;
+        padding-top: 10em;
         background-image: url("https://cdn.pixabay.com/photo/2017/12/25/19/27/pendant-3038987_1280.jpg");
         background-repeat: no-repeat;
         background-size: cover;
-    }
-    .services-banner__head {
-        font-size: 80px;
-        color: white;
-        font-weight: 900;
+        &__head {
+            font-size: 5em;
+            color: white;
+            font-weight: 900;
+            margin-left: auto;
+        }
     }
     .services-list {
         padding: 60px 0;
         flex-wrap: wrap;
-    }
-    .services-list__item {
-        flex: calc(50% - 30px);
-        width: calc(50% - 30px);
-        padding: 35px;
-        margin: 15px;
-        box-sizing: border-box;
+        &__item {
+            width: calc(50% - 30px);
+            padding: 35px;
+            margin: 15px;
+            box-sizing: border-box;
+        }
     }
     .service {
         border: 1px solid rgba(128, 128, 128, 0.53);
         border-radius: 10px;
-    }
-    .service__image {
-        width: 100%;
-        height: 500px;
-    }
-    .service__image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .service__text {
-        font-size: 40px;
-        text-align: center;
-        margin: 30px 0;
-    }
-    .service__more {
-        display: flex;
-        justify-content: center;
-        margin: 40px auto 0;
-        font-size: 23px;
-        text-decoration: none;
-        color: #b70000;
-        transition: 0.3s;
-    }
-    .service__more:hover {
-        color: #610000;
+        &__image {
+            width: 100%;
+            height: 500px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        &__text {
+            font-size: 2.7em;
+            text-align: center;
+            margin: 30px 0;
+        }
+        &__more {
+            display: flex;
+            justify-content: center;
+            margin: 40px auto 0;
+            font-size: 1.3em;
+            text-decoration: none;
+            color: #b70000;
+            transition: 0.3s;
+            &:hover {
+                color: #610000;
+            }
+        }
     }
 </style>
