@@ -56,6 +56,9 @@
           <router-link :to="'/reviews'">
             Отзывы
           </router-link>
+          <router-link class="feedback-form__appeals" :to="'/appeals'">
+            Посмотреть все обращения!
+          </router-link>
         </div>
       </div>
     </transition>
@@ -64,13 +67,14 @@
         v-if="feedback"
         class="feedback-form"
       >
-        <div class="feedback-form__window">
+        <form class="feedback-form__window" @submit.prevent="sendHandling">
           <div class="feedback-form__title">
             Обратная связь
           </div>
           <div class="feedback-form__item">
             <input
               v-model="handling.name"
+              v-model.trim="$v.handling.name.$model"
               type="text"
               placeholder="Ваше имя"
             >
@@ -78,6 +82,7 @@
           <div class="feedback-form__item">
             <input
               v-model="handling.text"
+              v-model.trim="$v.handling.text.$model"
               type="text"
               placeholder="Тема обращения"
             >
@@ -92,9 +97,16 @@
           <div class="feedback-form__item">
             <input
               v-model="handling.phone"
+              v-model.trim="$v.handling.phone.$model"
               type="tel"
               placeholder="Мобильный телефон"
             >
+          </div>
+          <div
+              v-if="errorMsg"
+              class="feedback-form__error"
+          >
+            Поля "Ваше имя", "Тема обращения" и "Телефон" обязательны для заполнения
           </div>
           <div class="feedback-form__item feedback-form__file">
             <input
@@ -141,12 +153,14 @@
               <label for="checkbox--3">Ответ не требуется</label>
             </div>
           </div>
-          <button
+          <button type="submit"
             class="feedback-form__btn about-content__btn"
-            @click="sendHandling"
           >
             Отправить обращение
           </button>
+          <router-link class="feedback-form__appeals" :to="'/appeals'">
+            Посмотреть все обращения!
+          </router-link>
           <div
             class="modal-content__close"
             @click="feedback = false"
@@ -156,18 +170,21 @@
               src="@/assets/close.svg"
             >
           </div>
-        </div>
+        </form>
       </div>
     </transition>
   </header>
 </template>
 
 <script>
+  import { required } from 'vuelidate/lib/validators'
+
   export default {
     data() {
       return {
         feedback: false,
         burgerMenu: false,
+        errorMsg: false,
         handling: {
           name: '',
           text: '',
@@ -175,13 +192,34 @@
           phone: '',
           file: '',
           communication: []
+        },
+      }
+    },
+    validations: {
+      handling: {
+        name: {
+          required
+        },
+        text: {
+          required
+        },
+        phone: {
+          required
         }
       }
     },
     methods: {
       sendHandling () {
-        console.log(this.handling)
-        this.feedback = false
+        this.$v.$touch()
+        if (this.$v.$invalid) {
+          this.errorMsg = true
+          setTimeout(()=>{
+            this.errorMsg = false
+          }, 1000)
+        } else {
+          this.feedback = false
+          this.$store.commit('newFormResult', this.handling)
+        }
       },
       signalChange (evt) {
         this.handling.file = this.$refs.file.files[0]
@@ -265,7 +303,7 @@
             z-index: 1;
             padding: 60px;
             width: 45%;
-            height: 77%;
+            height: auto;
             background: #fff;
             margin: 1rem auto;
             border-radius: .3rem;
@@ -303,6 +341,17 @@
             width: 35px;
             right: 10px;
             top: 10px
+        }
+        &__error {
+          margin-top: 15px;
+          color: #b20000;
+        }
+        &__appeals {
+          display: block;
+          margin: 30px auto 0;
+          text-align: center;
+          font-size: 1.6em;
+          text-decoration: none;
         }
     }
     .custom-checkbox {
@@ -346,7 +395,20 @@
     }
     @media (max-width: 1500px) {
         .header__nav {
-            margin-left: 100px;
+            margin-left: 40px;
+        }
+        .header {
+          &__button {
+            padding: 10px;
+            margin-left: 40px;
+            border-radius: 5px;
+            font-size: 1em;
+          }
+        }
+        .feedback-form {
+          &__window {
+            width: 70%;
+          }
         }
     }
     @media (min-width: 992px) {
@@ -365,6 +427,9 @@
             }
             &__nav {
                 display: none;
+            }
+            &__button {
+              display: none;
             }
         }
         .header-nav {
@@ -391,6 +456,21 @@
                     margin-bottom: 20px;
                 }
             }
+        }
+        .feedback-form {
+          &__window {
+            width: 90%;
+            padding: 20px;
+          }
+          &__title {
+            font-size: 2em;
+          }
+        }
+        .checkboxes {
+          &__item {
+            width: 100%;
+            margin-bottom: 15px;
+          }
         }
     }
 </style>

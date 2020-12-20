@@ -101,28 +101,6 @@
             }
         }
     }
-    .about-content {
-        &__head {
-            font-size: 2.7em;
-            margin-bottom: 0.25em;
-        }
-        &__btn {
-            display: block;
-            padding: 15px 35px;
-            margin: 45px auto 0;
-            border: 1px solid white;
-            outline: none;
-            background: linear-gradient(to left, #5b7a97, #6a6aa6);
-            border-radius: 0.5em;
-            color: white;
-            font-family: 'montserratligth', sans-serif;
-            transition: 0.3s;
-            cursor: pointer;
-            &:hover {
-                filter: hue-rotate(45deg);
-            }
-        }
-    }
     @media (max-width: 1500px) {
         .banner {
             &.container {
