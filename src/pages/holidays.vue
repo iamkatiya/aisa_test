@@ -90,4 +90,25 @@
     font-size: 2.7em;
   }
 }
+  @media (max-width: 991px) {
+    .holidays {
+      &__text {
+        flex-wrap: wrap;
+        p {
+          width: 100%;
+          margin-bottom: 5px;
+        }
+      }
+      &__name {
+        font-size: 1.7em;
+      }
+      &__item {
+        background-size: 50px;
+        padding-right: 25px;
+      }
+      &__head {
+        font-size: 2em;
+      }
+    }
+  }
 </style>
