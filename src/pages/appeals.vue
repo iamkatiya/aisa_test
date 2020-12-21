@@ -1,49 +1,56 @@
 <template>
-    <div>
-        <header-nav />
-        <div class="appeals__wrap">
-            <div
-                v-if="appeals.length === 0"
-                class="appeals__empty container"
-            >
-                Обращений пока нет...
+  <div>
+    <header-nav />
+    <div class="appeals__wrap">
+      <div
+        v-if="appeals.length === 0"
+        class="appeals__empty container"
+      >
+        Обращений пока нет...
+      </div>
+      <div
+        v-else
+        class="appeals container"
+      >
+        <div
+          v-for="(item, itemIndex) in appeals"
+          :key="itemIndex"
+          class="appeals__item"
+        >
+          <div class="appeals__name">
+            <p>Имя: </p>
+            {{ item.name }}
+          </div>
+          <div class="appeals__text">
+            <p>Текст обращения: </p>
+            {{ item.text }}
+          </div>
+          <div class="appeals__text">
+            <p>Электронная почта: </p>
+            {{ item.email }}
+          </div>
+          <div class="appeals__text">
+            <p>Телефон: </p>
+            {{ item.phone }}
+          </div>
+          <div class="appeals__communication communication">
+            <div class="communication__head">
+              Способ связи:
             </div>
-            <div
-                v-else
-                class="appeals container"
-            >
-                <div v-for="(item, itemIndex) in appeals" :key="itemIndex" class="appeals__item">
-                    <div class="appeals__name">
-                        <p>Имя: </p>
-                        {{ item.name }}
-                    </div>
-                    <div class="appeals__text">
-                        <p>Текст обращения: </p>
-                        {{ item.text }}
-                    </div>
-                    <div class="appeals__text">
-                        <p>Электронная почта: </p>
-                        {{ item.email }}
-                    </div>
-                    <div class="appeals__text">
-                        <p>Телефон: </p>
-                        {{ item.phone }}
-                    </div>
-                    <div class="appeals__communication communication">
-                        <div class="communication__head">
-                            Способ связи:
-                        </div>
-                        <div class="communication__array">
-                            <div v-for="(communication, communicationIndex) in item.communication" :key="communicationIndex">
-                                {{ communication }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="communication__array">
+              <div
+                v-for="(communication, communicationIndex) in item.communication"
+                :key="communicationIndex"
+              >
+                {{ communication }}
+              </div>
             </div>
+          </div>
         </div>
-        <footer-nav />
+      </div>
     </div>
+    <footer-nav />
+  </div>
 </template>
 
 <script>

@@ -56,7 +56,10 @@
           <router-link :to="'/reviews'">
             Отзывы
           </router-link>
-          <router-link class="feedback-form__appeals" :to="'/appeals'">
+          <router-link
+            class="feedback-form__appeals"
+            :to="'/appeals'"
+          >
             Посмотреть все обращения!
           </router-link>
         </div>
@@ -67,7 +70,10 @@
         v-if="feedback"
         class="feedback-form"
       >
-        <form class="feedback-form__window" @submit.prevent="sendHandling">
+        <form
+          class="feedback-form__window"
+          @submit.prevent="sendHandling"
+        >
           <div class="feedback-form__title">
             Обратная связь
           </div>
@@ -103,8 +109,8 @@
             >
           </div>
           <div
-              v-if="errorMsg"
-              class="feedback-form__error"
+            v-if="errorMsg"
+            class="feedback-form__error"
           >
             Поля "Ваше имя", "Тема обращения" и "Телефон" обязательны для заполнения
           </div>
@@ -153,12 +159,16 @@
               <label for="checkbox--3">Ответ не требуется</label>
             </div>
           </div>
-          <button type="submit"
+          <button
+            type="submit"
             class="feedback-form__btn about-content__btn"
           >
             Отправить обращение
           </button>
-          <router-link class="feedback-form__appeals" :to="'/appeals'">
+          <router-link
+            class="feedback-form__appeals"
+            :to="'/appeals'"
+          >
             Посмотреть все обращения!
           </router-link>
           <div
