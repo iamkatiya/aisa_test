@@ -1,10 +1,16 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <div class="footer__logo logotype">
-        <img src="../assets/logo.svg">
+      <router-link
+        :to="{ name: 'index'}"
+        class="footer__logo logotype"
+      >
+        <img
+          alt="wonder site"
+          src="@/assets/logo.svg"
+        >
         <h1>Wonder site</h1>
-      </div>
+      </router-link>
       <div class="footer__nav contacts">
         <div class="contacts__head">
           Наш адрес:
@@ -30,56 +36,52 @@
   </footer>
 </template>
 
-<style lang="scss">
+<style>
 .footer {
     background-color: #2c3e50;
     padding: 30px 0 20px;
-    .container {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
+}
+.footer .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.contacts__head {
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 16px;
+}
+.contacts__info {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+.contacts a {
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
+.contacts a:hover {
+    color: #6d8fb0;
+}
+@media (max-width: 950px) {
+    .footer .container {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .footer__logo {
+        flex: 100%;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .footer__nav {
+        margin-right: 50px;
     }
 }
-.contacts {
-   &__head {
-       font-size: 1.5em;
-       color: white;
-       margin-bottom: 16px;
-   }
-    &__info {
-        display: block;
-        color: white;
-        text-decoration: none;
-    }
-    a {
-        transition: 0.3s;
-        margin-bottom: 10px;
-        &:hover {
-            color: #6d8fb0;
-        }
-    }
-}
-@media (max-width: 991px) {
-    .footer {
-        .container {
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-        &__logo {
-            width: 100%;
-            margin-bottom: 40px;
-        }
-        &__nav {
-            margin-right: 50px;
-        }
-    }
-}
-@media (max-width: 768px) {
-    .footer {
-        &__nav {
-            width: 100%;
-            margin-bottom: 20px;
-        }
+@media (max-width: 700px) {
+    .footer__nav {
+        flex: 100%;
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
 </style>

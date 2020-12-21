@@ -65,13 +65,13 @@
     },
     data () {
       return {
-        appeals: this.$store.state.formResults,
+        appeals: this.$store.state.appeals.formResults,
       }
     }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .appeals {
     padding: 60px 0;
     flex-wrap: wrap;
@@ -101,9 +101,20 @@
         display: flex;
     }
 }
-    .communication {
-        &__head {
-            width: 220px;
-        }
+.communication {
+    &__head {
+        width: 220px;
     }
+}
+@media (max-width: 991px) {
+  .appeals {
+    &__item {
+      width: 100%;
+      padding: 15px;
+    }
+    &__wrap {
+      margin-top: 0;
+    }
+  }
+}
 </style>

@@ -9,13 +9,21 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .content {
-        padding: 60px 0;
+        padding-top: 60px;
+        padding-bottom: 60px;
         flex-wrap: wrap;
         &__head {
              font-size: 4em;
              margin: 0 auto 50px;
          }
     }
+  @media (max-width: 991px) {
+    .content {
+      &__head {
+        font-size: 2em;
+      }
+    }
+  }
 </style>

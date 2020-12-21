@@ -2,7 +2,10 @@
   <section class="extra container">
     <div class="extra__additional additional">
       <div class="additional__image">
-        <img src="https://cdn.pixabay.com/photo/2015/07/10/17/27/sparkler-839831_1280.jpg">
+        <img
+          alt="additional advantages"
+          src="https://cdn.pixabay.com/photo/2015/07/10/17/27/sparkler-839831_1280.jpg"
+        >
       </div>
       <div class="additional__content">
         <b>Дополнительные преимущества</b>
@@ -16,7 +19,10 @@
     </div>
     <div class="extra__reviews review">
       <div class="review__image">
-        <img src="https://cdn.pixabay.com/photo/2018/12/13/14/24/fair-3872942_1280.jpg">
+        <img
+          alt="reviews"
+          src="https://cdn.pixabay.com/photo/2018/12/13/14/24/fair-3872942_1280.jpg"
+        >
       </div>
       <div class="review__content">
         <b>Отзывы</b>
@@ -28,7 +34,7 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .extra {
         margin-top: 4em;
         margin-bottom: 4em;

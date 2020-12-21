@@ -28,7 +28,7 @@
     }
   }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .modal {
         display: flex;
         z-index: 1;

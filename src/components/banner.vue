@@ -21,13 +21,22 @@
         :autoplay="true"
       >
         <div>
-          <img src="https://cdn.pixabay.com/photo/2018/07/18/18/53/new-years-eve-3547030_1280.jpg">
+          <img
+            alt="fir tree"
+            src="https://cdn.pixabay.com/photo/2018/07/18/18/53/new-years-eve-3547030_1280.jpg"
+          >
         </div>
         <div>
-          <img src="https://cdn.pixabay.com/photo/2018/12/26/22/12/christmas-background-3896551_1280.jpg">
+          <img
+            alt="snow man"
+            src="https://cdn.pixabay.com/photo/2018/12/26/22/12/christmas-background-3896551_1280.jpg"
+          >
         </div>
         <div>
-          <img src="https://cdn.pixabay.com/photo/2017/12/25/19/27/pendant-3038987_1280.jpg">
+          <img
+            alt="skates"
+            src="https://cdn.pixabay.com/photo/2017/12/25/19/27/pendant-3038987_1280.jpg"
+          >
         </div>
       </carousel>
     </div>
@@ -72,6 +81,7 @@
             box-sizing: border-box;
         }
         &__carousel {
+          margin-top: 3em;
             width: 55%;
             .owl-carousel.owl-loaded {
                 display: flex;

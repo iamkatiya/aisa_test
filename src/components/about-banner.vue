@@ -8,7 +8,7 @@
   </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .about-banner {
     height: 40em;
     padding-top: 10em;
@@ -20,5 +20,13 @@
         color: white;
         font-weight: 900;
     }
+}
+@media (max-width: 991px) {
+  .about-banner {
+    height: 28em;
+    &__head {
+      font-size: 2em;
+    }
+  }
 }
 </style>

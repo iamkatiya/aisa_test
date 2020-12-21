@@ -41,6 +41,7 @@
     display: flex;
     white-space: nowrap;
     align-items: center;
+    text-decoration: none;
   }
   .logotype img {
     width: 60px;
@@ -82,6 +83,9 @@
       &:hover {
         filter: hue-rotate(45deg);
       }
+    }
+    &__text {
+      line-height: 1.43em;
     }
   }
   @media (max-width: 1500px) {

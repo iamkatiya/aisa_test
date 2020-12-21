@@ -10,14 +10,17 @@
     <section class="reviews-list container">
       <carousel
         class="reviews-list__carousel"
-        :items="3"
+        :responsive="{0:{items:1}, 700:{items:4}}"
         :dots="false"
         :nav="false"
         :autoplay="true"
       >
         <div class="reviews-list__item">
           <div class="reviews-list__item__head">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <img
+              alt="person"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU"
+            >
             <p>Иван И.</p>
           </div>
           <div class="reviews-list__item__text">
@@ -26,7 +29,10 @@
         </div>
         <div class="reviews-list__item">
           <div class="reviews-list__item__head">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <img
+              alt="person"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU"
+            >
             <p>Иван И.</p>
           </div>
           <div class="reviews-list__item__text">
@@ -35,7 +41,10 @@
         </div>
         <div class="reviews-list__item">
           <div class="reviews-list__item__head">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <img
+              alt="person"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU"
+            >
             <p>Иван И.</p>
           </div>
           <div class="reviews-list__item__text">
@@ -44,7 +53,10 @@
         </div>
         <div class="reviews-list__item">
           <div class="reviews-list__item__head">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU">
+            <img
+              alt="person"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU"
+            >
             <p>Иван И.</p>
           </div>
           <div class="reviews-list__item__text">
@@ -56,7 +68,17 @@
   </div>
 </template>
 
-<style lang="scss">
+<script>
+  import carousel from 'vue-owl-carousel2';
+
+  export default {
+    components: {
+      carousel
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
     .reviews-banner {
         height: 40em;
         padding-top: 10em;
@@ -73,6 +95,7 @@
         overflow-x: hidden;
         margin-top: 40px;
         margin-bottom: 40px;
+        display: block;
         &__item {
             padding: 30px;
             &__head {
@@ -90,15 +113,13 @@
         border-radius: 60px;
         margin-right: 20px;
     }
-
+    @media (max-width: 991px) {
+      .reviews-banner {
+        height: 28em;
+        &__head {
+          font-size: 2em;
+        }
+      }
+    }
 </style>
 
-<script>
-import carousel from 'vue-owl-carousel2';
-
-export default {
-  components: {
-    carousel
-  }
-}
-</script>

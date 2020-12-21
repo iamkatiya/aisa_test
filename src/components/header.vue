@@ -1,24 +1,30 @@
 <template>
   <header class="header">
     <div class="container">
-      <div class="header__logo logotype">
-        <img src="@/assets/logo.svg">
+      <router-link
+        :to="{ name: 'index'}"
+        class="header__logo logotype"
+      >
+        <img
+          alt="wonder site"
+          src="@/assets/logo.svg"
+        >
         <h1>Wonder site</h1>
-      </div>
+      </router-link>
       <div class="header__nav">
-        <router-link :to="'#'">
+        <router-link :to="{ name: 'index'}">
           Главная
         </router-link>
-        <router-link :to="'/about'">
+        <router-link :to="{ name: 'about'}">
           О компании
         </router-link>
-        <router-link :to="'/services'">
+        <router-link :to="{ name: 'services'}">
           Услуги
         </router-link>
-        <router-link :to="'#'">
-          Цены
+        <router-link :to="{ name: 'holidays'}">
+          Праздники
         </router-link>
-        <router-link :to="'/reviews'">
+        <router-link :to="{ name: 'reviews'}">
           Отзывы
         </router-link>
       </div>
@@ -26,11 +32,14 @@
         class="header__burger"
         @click="burgerMenu =! burgerMenu"
       >
-        <img src="@/assets/burger.svg">
+        <img
+          alt="hamburger"
+          src="@/assets/burger.svg"
+        >
       </div>
       <div
         class="header__button"
-        @click="feedback = true"
+        @click="openFeedbackWindow"
       >
         Связаться
       </div>
@@ -41,24 +50,24 @@
         class="header-nav__mobile"
       >
         <div class="container">
-          <router-link :to="'#'">
+          <router-link :to="{ name: 'index'}">
             Главная
           </router-link>
-          <router-link :to="'/about'">
+          <router-link :to="{ name: 'about'}">
             О компании
           </router-link>
-          <router-link :to="'/services'">
+          <router-link :to="{ name: 'services'}">
             Услуги
           </router-link>
           <router-link :to="'#'">
             Цены
           </router-link>
-          <router-link :to="'/reviews'">
+          <router-link :to="{ name: 'reviews'}">
             Отзывы
           </router-link>
           <router-link
+            :to="{ name: 'appeals'}"
             class="feedback-form__appeals"
-            :to="'/appeals'"
           >
             Посмотреть все обращения!
           </router-link>
@@ -173,7 +182,7 @@
           </router-link>
           <div
             class="modal-content__close"
-            @click="feedback = false"
+            @click="closeFeedbackWindow"
           >
             <img
               class="modal-content__close"
@@ -219,6 +228,14 @@
       }
     },
     methods: {
+      openFeedbackWindow () {
+        this.feedback = true
+        document.body.style.overflow = 'hidden'
+      },
+      closeFeedbackWindow () {
+        this.feedback = false
+        document.body.style.overflow = 'auto'
+      },
       sendHandling () {
         this.$v.$touch()
         if (this.$v.$invalid) {
@@ -231,6 +248,7 @@
           this.$store.commit('newFormResult', this.handling)
           this.handling = {}
           this.handling.communication = []
+          document.body.style.overflow = 'auto'
         }
       },
       signalChange (evt) {
@@ -240,7 +258,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .header {
         background-color: #5b7a97;
         padding: 20px 0;
@@ -321,6 +339,10 @@
             border-radius: .3rem;
             box-shadow: 0 3px 7px 0 rgba(0, 0, 0, .2);
             box-sizing: border-box;
+            @media (max-height: 1000px) {
+              height: 85vh;
+              overflow-y: scroll;
+            }
         }
         &__title {
             font-size: 3em;
@@ -416,6 +438,9 @@
             border-radius: 5px;
             font-size: 1em;
           }
+          .container {
+            max-width: 1150px;
+          }
         }
         .feedback-form {
           &__window {
@@ -423,52 +448,55 @@
           }
         }
     }
-    @media (min-width: 992px) {
-        .header__burger {
-            display: none;
+    @media (min-width: 1251px) {
+      .header__burger {
+        display: none;
+      }
+      .header-nav__mobile {
+        display: none;
+      }
+    }
+    @media (max-width: 1250px) {
+      .header {
+        .container {
+          max-width: 900px;
+          justify-content: space-between;
+          align-items: center;
         }
-        .header-nav__mobile {
-            display: none;
+        &__nav {
+          display: none;
         }
+        &__button {
+          display: none;
+        }
+      }
+      .header-nav {
+        &__mobile {
+          position: absolute;
+          background-color: white;
+          padding: 20px 0 0;
+          width: 100%;
+          top: 100%;
+          left: 0;
+          z-index: 2;
+          text-align: center;
+          .container {
+            flex-wrap: wrap;
+          }
+          a {
+            font-family: 'montserratligth', sans-serif;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 1.2em;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+          }
+        }
+      }
     }
     @media (max-width: 991px) {
-        .header {
-            .container {
-                justify-content: space-between;
-                align-items: center;
-            }
-            &__nav {
-                display: none;
-            }
-            &__button {
-              display: none;
-            }
-        }
-        .header-nav {
-            &__mobile {
-                position: absolute;
-                background-color: white;
-                padding: 20px 0 0;
-                width: 100%;
-                top: 100%;
-                left: 0;
-                z-index: 2;
-                text-align: center;
-                .container {
-                    flex-wrap: wrap;
-                }
-                a {
-                    font-family: 'montserratligth', sans-serif;
-                    color: #2c3e50;
-                    text-decoration: none;
-                    font-size: 1.2em;
-                    overflow: hidden;
-                    position: relative;
-                    width: 100%;
-                    margin-bottom: 20px;
-                }
-            }
-        }
         .feedback-form {
           &__window {
             width: 90%;
