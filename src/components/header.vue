@@ -229,6 +229,7 @@
         } else {
           this.feedback = false
           this.$store.commit('newFormResult', this.handling)
+          this.handling = {}
         }
       },
       signalChange (evt) {
