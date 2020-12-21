@@ -230,6 +230,7 @@
           this.feedback = false
           this.$store.commit('newFormResult', this.handling)
           this.handling = {}
+          this.handling.communication = []
         }
       },
       signalChange (evt) {
