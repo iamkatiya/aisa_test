@@ -63,7 +63,7 @@
 .contacts a:hover {
     color: #6d8fb0;
 }
-@media (max-width: 950px) {
+@media (max-width: 991px) {
     .footer .container {
         flex-wrap: wrap;
         justify-content: flex-start;
@@ -71,17 +71,17 @@
     .footer__logo {
         flex: 100%;
         width: 100%;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     .footer__nav {
         margin-right: 50px;
     }
 }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .footer__nav {
         flex: 100%;
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 }
 </style>
