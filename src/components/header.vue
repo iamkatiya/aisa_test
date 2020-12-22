@@ -94,14 +94,23 @@ export default {
       isVisibleModal: false,
     }
   },
+  created () {
+    this.$disableContent.$on('disableScroll', (action)=>{
+      if(action==='disable') {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = 'auto'
+      }
+    })
+  },
   methods: {
     openFeedbackWindow() {
       this.isVisibleModal = true
-      document.body.style.overflow = 'hidden'
+      this.$disableContent.$emit('disableScroll', 'disable')
     },
     closeModal() {
       this.isVisibleModal = false
-      document.body.style.overflow = 'auto'
+      this.$disableContent.$emit('disableScroll', 'active')
     },
   },
 }

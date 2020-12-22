@@ -157,7 +157,6 @@
           this.handling = {}
           this.handling.communication = []
           this.$emit('closeModal');
-          document.body.style.overflow = 'auto'
         }
       },
     }

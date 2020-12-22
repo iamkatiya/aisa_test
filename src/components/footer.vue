@@ -43,7 +43,7 @@
 }
 .footer .container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
 }
 .contacts__head {

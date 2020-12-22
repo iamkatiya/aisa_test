@@ -18,11 +18,11 @@
         </div>
         <div class="filter__item">
           <p>по дате</p>
-          <input
+          <date-picker
             v-model="filterDate"
-            type="date"
+            value-type="format"
             @change="filter"
-          >
+          />
         </div>
       </div>
       <div class="holidays__filters sort">
@@ -49,7 +49,7 @@
       </div>
       <div class="holidays__wrap">
         <div
-          v-if="emptyResults"
+          v-if="isEmptyResults"
           class="holidays__empty"
         >
           К сожалению, по вашему запросу ничего не найдено
@@ -80,20 +80,27 @@
 <script>
 import headerNav from '../components/header.vue'
 import footerNav from '../components/footer.vue'
+import DatePicker from 'vue2-datepicker';
 
 export default {
   name: 'Holidays',
   components: {
     headerNav,
     footerNav,
+    DatePicker
   },
   data() {
     return {
       holidays: [],
       filterValue: '',
-      filterDate: '',
+      filterDate: null,
       filteredArr: [],
-      emptyResults: false,
+      date: '2019-10-09'
+    }
+  },
+  computed: {
+    isEmptyResults: function () {
+      return this.filteredArr.length === 0
     }
   },
   mounted() {
@@ -105,20 +112,14 @@ export default {
     filter() {
       this.filteredArr = this.holidays
       if (this.filterValue !== '') {
-        this.emptyResults = false
         this.filteredArr = this.filteredArr.filter(item =>
           item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase())
         )
-        console.log(this.filteredArr)
       }
-      if (this.filterDate !== '') {
-        this.emptyResults = false
+      if (this.filterDate !== null) {
         this.filteredArr = this.filteredArr.filter(item => {
           return Date.parse(item.date) === Date.parse(this.filterDate)
         })
-      }
-      if (this.filteredArr.length === 0) {
-        this.emptyResults = true
       }
     },
     upSort() {
@@ -141,7 +142,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../node_modules/vue2-datepicker/index.css';
 .holidays {
   flex-wrap: wrap;
   margin-top: 60px;
@@ -161,6 +163,7 @@ export default {
       border: 1px solid #2c3e50;
       border-radius: 4px;
       outline: none;
+      box-sizing: border-box;
     }
   }
   &__item {
@@ -243,6 +246,17 @@ export default {
 }
 .revert-arrow {
   transform: rotate(180deg);
+}
+.mx-datepicker {
+  width: 300px;
+  input {
+    height: 37px;
+    padding: 10px;
+  }
+}
+.mx-input {
+  height: 37px;
+  padding: 10px;
 }
 @media (max-width: 1500px) {
   .holidays {
