@@ -47,20 +47,29 @@
           >
         </div>
       </div>
-      <div
-        v-for="(item, itemIndex) in filteredArr"
-        :key="itemIndex"
-        class="holidays__item"
-      >
-        <div class="holidays__name holidays__text">
-          {{ item.holidayName }}
+      <div class="holidays__wrap">
+        <div
+          v-if="emptyResults"
+          class="holidays__empty"
+        >
+          К сожалению, по вашему запросу ничего не найдено
         </div>
-        <div class="holidays__text">
-          {{ item.about }}
-        </div>
-        <div class="holidays__text holidays__date">
-          Дата проведения:
-          {{ item.date.toString() }}
+        <div
+          v-for="(item, itemIndex) in filteredArr"
+          v-else
+          :key="itemIndex"
+          class="holidays__item"
+        >
+          <div class="holidays__name holidays__text">
+            {{ item.holidayName }}
+          </div>
+          <div class="holidays__text">
+            {{ item.about }}
+          </div>
+          <div class="holidays__text holidays__date">
+            Дата проведения:
+            {{ item.date.toString() }}
+          </div>
         </div>
       </div>
     </div>
@@ -69,62 +78,67 @@
 </template>
 
 <script>
-  import headerNav from '../components/header.vue'
-  import footerNav from '../components/footer.vue'
+import headerNav from '../components/header.vue'
+import footerNav from '../components/footer.vue'
 
-  export default {
-    name: 'Holidays',
-    components: {
-      headerNav,
-      footerNav
-    },
-    data() {
-      return {
-        holidays: [],
-        filterValue: '',
-        filterDate: '',
-        filteredArr: []
-      }
-    },
-    mounted() {
-      this.$store.dispatch('getJson')
-      this.holidays = this.$store.state.holidays.jsonData
-      this.filteredArr = this.holidays
-    },
-    methods: {
-      filter () {
-        this.filteredArr = this.holidays
-        if (this.filterValue!=='') {
-          this.filteredArr = this.filteredArr.filter(item => item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase()))
-        }
-        if (this.filterDate!=='') {
-          this.filteredArr = this.filteredArr.filter(item => {
-            return Date.parse(item.date) === Date.parse(this.filterDate)
-          })
-        }
-      },
-      upSort () {
-        function compare(a, b) {
-          if (a.date < b.date)
-            return -1;
-          if (a.date > b.date)
-            return 1;
-          return 0;
-        }
-        return this.filteredArr.sort(compare);
-      },
-      downSort () {
-        function compare(a, b) {
-          if (a.date < b.date)
-            return 1;
-          if (a.date > b.date)
-            return -1;
-          return 0;
-        }
-        return this.filteredArr.sort(compare);
-      }
+export default {
+  name: 'Holidays',
+  components: {
+    headerNav,
+    footerNav,
+  },
+  data() {
+    return {
+      holidays: [],
+      filterValue: '',
+      filterDate: '',
+      filteredArr: [],
+      emptyResults: false,
     }
-  }
+  },
+  mounted() {
+    this.$store.dispatch('getJson')
+    this.holidays = this.$store.state.holidays.jsonData
+    this.filteredArr = this.holidays
+  },
+  methods: {
+    filter() {
+      this.filteredArr = this.holidays
+      if (this.filterValue !== '') {
+        this.emptyResults = false
+        this.filteredArr = this.filteredArr.filter(item =>
+          item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase())
+        )
+        console.log(this.filteredArr)
+      }
+      if (this.filterDate !== '') {
+        this.emptyResults = false
+        this.filteredArr = this.filteredArr.filter(item => {
+          return Date.parse(item.date) === Date.parse(this.filterDate)
+        })
+      }
+      if (this.filteredArr.length === 0) {
+        this.emptyResults = true
+      }
+    },
+    upSort() {
+      function compare(a, b) {
+        if (a.date < b.date) return -1
+        if (a.date > b.date) return 1
+        return 0
+      }
+      return this.filteredArr.sort(compare)
+    },
+    downSort() {
+      function compare(a, b) {
+        if (a.date < b.date) return 1
+        if (a.date > b.date) return -1
+        return 0
+      }
+      return this.filteredArr.sort(compare)
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -132,6 +146,11 @@
   flex-wrap: wrap;
   margin-top: 60px;
   margin-bottom: 60px;
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 70vh;
+  }
   &__filters {
     width: 35%;
     margin-bottom: 40px;
@@ -159,7 +178,7 @@
     background-size: 96px;
     background-repeat: no-repeat;
     background-position-x: right;
-    background-image: url("../assets/snow.svg");
+    background-image: url('../assets/snow.svg');
   }
   &__head {
     margin-bottom: 60px;
@@ -181,10 +200,10 @@
     }
   }
   &__date {
-      margin-top: auto;
+    margin-top: auto;
   }
   &__name {
-    font-family: "Oleo", sans-serif;
+    font-family: 'Oleo', sans-serif;
     font-size: 2.7em;
   }
 }
@@ -210,7 +229,7 @@
     margin-bottom: 10px;
     padding: 8px 0;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
     font-size: 1.3em;
     &:hover {
       filter: contrast(0.5);
@@ -225,33 +244,33 @@
 .revert-arrow {
   transform: rotate(180deg);
 }
-  @media (max-width: 1500px) {
-    .holidays {
-        &__item {
-            width: 100%;
-            margin-right: 0;
-        }
+@media (max-width: 1500px) {
+  .holidays {
+    &__item {
+      width: 100%;
+      margin-right: 0;
     }
   }
-  @media (max-width: 991px) {
-    .holidays {
-      &__text {
-        flex-wrap: wrap;
-        p {
-          width: 100%;
-          margin-bottom: 5px;
-        }
-      }
-      &__name {
-        font-size: 1.7em;
-      }
-      &__item {
-        background-size: 50px;
-        padding-right: 25px;
-      }
-      &__head {
-        font-size: 2em;
+}
+@media (max-width: 991px) {
+  .holidays {
+    &__text {
+      flex-wrap: wrap;
+      p {
+        width: 100%;
+        margin-bottom: 5px;
       }
     }
+    &__name {
+      font-size: 1.7em;
+    }
+    &__item {
+      background-size: 50px;
+      padding-right: 25px;
+    }
+    &__head {
+      font-size: 2em;
+    }
   }
+}
 </style>
