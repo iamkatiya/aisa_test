@@ -5,8 +5,50 @@
       <h2 class="holidays__head">
         Список праздников
       </h2>
+      <div class="holidays__filters filter">
+        <div class="filter__head">
+          Фильтр праздников:
+        </div>
+        <div class="filter__item">
+          <p>по названию</p>
+          <input
+            v-model="filterValue"
+            @keyup="filter"
+          >
+        </div>
+        <div class="filter__item">
+          <p>по дате</p>
+          <input
+            v-model="filterDate"
+            type="date"
+            @change="filter"
+          >
+        </div>
+      </div>
+      <div class="holidays__filters sort">
+        <div class="sort__head">
+          Сортировка праздников:
+        </div>
+        <div
+          class="sort__item"
+          @click="upSort"
+        >
+          По дате
+          <img src="@/assets/arrow-up.svg">
+        </div>
+        <div
+          class="sort__item"
+          @click="downSort"
+        >
+          По дате
+          <img
+            class="revert-arrow"
+            src="@/assets/arrow-up.svg"
+          >
+        </div>
+      </div>
       <div
-        v-for="(item, itemIndex) in holidays"
+        v-for="(item, itemIndex) in filteredArr"
         :key="itemIndex"
         class="holidays__item"
       >
@@ -16,9 +58,9 @@
         <div class="holidays__text">
           {{ item.about }}
         </div>
-        <div class="holidays__text">
-          <p>Дата проведения: </p>
-          {{ item.date }}
+        <div class="holidays__text holidays__date">
+          Дата проведения:
+          {{ item.date.toString() }}
         </div>
       </div>
     </div>
@@ -31,7 +73,7 @@
   import footerNav from '../components/footer.vue'
 
   export default {
-    name: 'App',
+    name: 'Holidays',
     components: {
       headerNav,
       footerNav
@@ -39,11 +81,48 @@
     data() {
       return {
         holidays: [],
+        filterValue: '',
+        filterDate: '',
+        filteredArr: []
       }
     },
     mounted() {
       this.$store.dispatch('getJson')
       this.holidays = this.$store.state.holidays.jsonData
+      this.filteredArr = this.holidays
+    },
+    methods: {
+      filter () {
+        this.filteredArr = this.holidays
+        if (this.filterValue!=='') {
+          this.filteredArr = this.filteredArr.filter(item => item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase()))
+        }
+        if (this.filterDate!=='') {
+          this.filteredArr = this.filteredArr.filter(item => {
+            return Date.parse(item.date) === Date.parse(this.filterDate)
+          })
+        }
+      },
+      upSort () {
+        function compare(a, b) {
+          if (a.date < b.date)
+            return -1;
+          if (a.date > b.date)
+            return 1;
+          return 0;
+        }
+        return this.filteredArr.sort(compare);
+      },
+      downSort () {
+        function compare(a, b) {
+          if (a.date < b.date)
+            return 1;
+          if (a.date > b.date)
+            return -1;
+          return 0;
+        }
+        return this.filteredArr.sort(compare);
+      }
     }
   }
 </script>
@@ -53,14 +132,29 @@
   flex-wrap: wrap;
   margin-top: 60px;
   margin-bottom: 60px;
+  &__filters {
+    width: 35%;
+    margin-bottom: 40px;
+    padding: 10px;
+    input {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #2c3e50;
+      border-radius: 4px;
+      outline: none;
+    }
+  }
   &__item {
+    display: flex;
+    flex-wrap: wrap;
     background-color: #6d8fb0;
-    width: 100%;
     padding: 25px 100px 25px 25px;
+    margin: 10px 10px 30px;
     color: white;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
     box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.4);
     border-radius: 7px;
-    margin-bottom: 30px;
     font-size: 1.6em;
     background-size: 96px;
     background-repeat: no-repeat;
@@ -68,7 +162,7 @@
     background-image: url("../assets/snow.svg");
   }
   &__head {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     width: 100%;
     text-align: center;
     font-size: 3em;
@@ -77,6 +171,7 @@
   }
   &__text {
     display: flex;
+    flex: 100%;
     margin-bottom: 20px;
     p {
       padding-right: 10px;
@@ -85,11 +180,59 @@
       margin-bottom: 0;
     }
   }
+  &__date {
+      margin-top: auto;
+  }
   &__name {
     font-family: "Oleo", sans-serif;
     font-size: 2.7em;
   }
 }
+.filter {
+  &__head {
+    font-size: 2em;
+  }
+  &__item {
+    p {
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+  }
+}
+.sort {
+  &__head {
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 1.3em;
+    &:hover {
+      filter: contrast(0.5);
+    }
+    img {
+      width: 22px;
+      height: 22px;
+      margin-left: 10px;
+    }
+  }
+}
+.revert-arrow {
+  transform: rotate(180deg);
+}
+  @media (max-width: 1500px) {
+    .holidays {
+        &__item {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+  }
   @media (max-width: 991px) {
     .holidays {
       &__text {

@@ -15,7 +15,7 @@
   import footerNav from '../components/footer.vue'
 
   export default {
-    name: 'App',
+    name: 'Index',
     components: {
       headerNav,
       banner,

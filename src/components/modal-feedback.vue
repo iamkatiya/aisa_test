@@ -301,4 +301,20 @@
             }
         }
     }
+    @media (max-width: 576px) {
+      .feedback-form {
+        &__window {
+          padding: 5px;
+        }
+        &__title {
+          font-size: 1em;
+          margin-top: 1em;
+        }
+      }
+      .modal-content__close {
+        width: 26px;
+        right: 5px;
+        top: 4px;
+      }
+    }
 </style>

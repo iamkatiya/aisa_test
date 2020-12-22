@@ -16,7 +16,7 @@
   import extra from '../components/extra.vue'
 
   export default {
-    name: 'App',
+    name: 'About',
     components: {
       headerNav,
       footerNav,

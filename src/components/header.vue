@@ -2,7 +2,7 @@
   <header class="header">
     <div class="container">
       <router-link
-        :to="{ name: 'index'}"
+        :to="{ name: 'index' }"
         class="header__logo logotype"
       >
         <img
@@ -12,25 +12,25 @@
         <h1>Wonder site</h1>
       </router-link>
       <div class="header__nav">
-        <router-link :to="{ name: 'index'}">
+        <router-link :to="{ name: 'index' }">
           Главная
         </router-link>
-        <router-link :to="{ name: 'about'}">
+        <router-link :to="{ name: 'about' }">
           О компании
         </router-link>
-        <router-link :to="{ name: 'services'}">
+        <router-link :to="{ name: 'services' }">
           Услуги
         </router-link>
-        <router-link :to="{ name: 'holidays'}">
+        <router-link :to="{ name: 'holidays' }">
           Праздники
         </router-link>
-        <router-link :to="{ name: 'reviews'}">
+        <router-link :to="{ name: 'reviews' }">
           Отзывы
         </router-link>
       </div>
       <div
         class="header__burger"
-        @click="burgerMenu =! burgerMenu"
+        @click="burgerMenu = !burgerMenu"
       >
         <img
           alt="hamburger"
@@ -50,23 +50,23 @@
         class="header-nav__mobile"
       >
         <div class="container">
-          <router-link :to="{ name: 'index'}">
+          <router-link :to="{ name: 'index' }">
             Главная
           </router-link>
-          <router-link :to="{ name: 'about'}">
+          <router-link :to="{ name: 'about' }">
             О компании
           </router-link>
-          <router-link :to="{ name: 'services'}">
+          <router-link :to="{ name: 'services' }">
             Услуги
           </router-link>
-          <router-link :to="{ name: 'holidays'}">
+          <router-link :to="{ name: 'holidays' }">
             Праздники
           </router-link>
-          <router-link :to="{ name: 'reviews'}">
+          <router-link :to="{ name: 'reviews' }">
             Отзывы
           </router-link>
           <router-link
-            :to="{ name: 'appeals'}"
+            :to="{ name: 'appeals' }"
             class="feedback-form__appeals"
           >
             Посмотреть все обращения!
@@ -82,150 +82,150 @@
 </template>
 
 <script>
-  import modalFeedback from './modal-feedback'
+import modalFeedback from './modal-feedback'
 
-  export default {
-    components: {
-      modalFeedback
-    },
-    data() {
-      return {
-        burgerMenu: false,
-        isVisibleModal: false
-      }
-    },
-    methods: {
-      openFeedbackWindow () {
-        this.isVisibleModal = true
-        document.body.style.overflow = 'hidden'
-      },
-      closeModal () {
-        this.isVisibleModal = false
-        document.body.style.overflow = 'auto'
-      },
+export default {
+  components: {
+    modalFeedback,
+  },
+  data() {
+    return {
+      burgerMenu: false,
+      isVisibleModal: false,
     }
-  }
+  },
+  methods: {
+    openFeedbackWindow() {
+      this.isVisibleModal = true
+      document.body.style.overflow = 'hidden'
+    },
+    closeModal() {
+      this.isVisibleModal = false
+      document.body.style.overflow = 'auto'
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-    .header {
-        background-color: #5b7a97;
-        padding: 20px 0;
+.header {
+  background-color: #5b7a97;
+  padding: 20px 0;
+  position: relative;
+  .container {
+    align-items: center;
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 300px;
+    justify-content: space-between;
+    a {
+      font-family: 'montserratligth', sans-serif;
+      color: white;
+      text-decoration: none;
+      font-size: 1.3em;
+      overflow: hidden;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        transition: 0.3s;
+        left: -100%;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(249, 249, 249, 0.76);
+      }
+      &:hover::before {
+        left: 0;
+      }
+    }
+  }
+  &__burger {
+    width: 40px;
+    img {
+      width: 100%;
+      filter: invert(1);
+    }
+  }
+  &__button {
+    display: inline-table;
+    padding: 15px 25px;
+    margin-left: 105px;
+    border-radius: 8px;
+    font-size: 1.3em;
+    background-color: rgba(255, 255, 255, 0.42);
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.72);
+    }
+  }
+}
+@media (max-width: 1500px) {
+  .header__nav {
+    margin-left: 40px;
+  }
+  .header {
+    &__button {
+      padding: 10px;
+      margin-left: 40px;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .container {
+      max-width: 1150px;
+    }
+  }
+}
+@media (min-width: 1251px) {
+  .header__burger {
+    display: none;
+  }
+  .header-nav__mobile {
+    display: none;
+  }
+}
+@media (max-width: 1250px) {
+  .header {
+    .container {
+      max-width: 900px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__nav {
+      display: none;
+    }
+    &__button {
+      display: none;
+    }
+  }
+  .header-nav {
+    &__mobile {
+      position: absolute;
+      background-color: white;
+      padding: 20px 0 0;
+      width: 100%;
+      top: 100%;
+      left: 0;
+      z-index: 2;
+      text-align: center;
+      .container {
+        flex-wrap: wrap;
+      }
+      a {
+        font-family: 'montserratligth', sans-serif;
+        color: #2c3e50;
+        text-decoration: none;
+        font-size: 1.2em;
+        overflow: hidden;
         position: relative;
-        .container {
-            align-items: center;
-        }
-        &__nav {
-             display: flex;
-             align-items: center;
-             width: 100%;
-             margin-left: 300px;
-             justify-content: space-between;
-            a {
-                font-family: 'montserratligth', sans-serif;
-                color: white;
-                text-decoration: none;
-                font-size: 1.3em;
-                overflow: hidden;
-                position: relative;
-                &::before {
-                    content: '';
-                    position: absolute;
-                    transition: 0.3s;
-                    left: -100%;
-                    bottom: 0;
-                    width: 100%;
-                    height: 1px;
-                    background-color: rgba(249, 249, 249, 0.76);
-                }
-                &:hover::before {
-                    left: 0;
-                }
-            }
-         }
-        &__burger {
-            width: 40px;
-            img {
-                width: 100%;
-                filter: invert(1);
-            }
-        }
-        &__button {
-            display: inline-table;
-            padding: 15px 25px;
-            margin-left: 105px;
-            border-radius: 8px;
-            font-size: 1.3em;
-            background-color: rgba(255, 255, 255, 0.42);
-            cursor: pointer;
-            transition: 0.3s;
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.72);
-            }
-        }
-    }
-    @media (max-width: 1500px) {
-        .header__nav {
-            margin-left: 40px;
-        }
-        .header {
-          &__button {
-            padding: 10px;
-            margin-left: 40px;
-            border-radius: 5px;
-            font-size: 1em;
-          }
-          .container {
-            max-width: 1150px;
-          }
-        }
-    }
-    @media (min-width: 1251px) {
-      .header__burger {
-        display: none;
-      }
-      .header-nav__mobile {
-        display: none;
+        width: 100%;
+        margin-bottom: 20px;
       }
     }
-    @media (max-width: 1250px) {
-      .header {
-        .container {
-          max-width: 900px;
-          justify-content: space-between;
-          align-items: center;
-        }
-        &__nav {
-          display: none;
-        }
-        &__button {
-          display: none;
-        }
-      }
-      .header-nav {
-        &__mobile {
-          position: absolute;
-          background-color: white;
-          padding: 20px 0 0;
-          width: 100%;
-          top: 100%;
-          left: 0;
-          z-index: 2;
-          text-align: center;
-          .container {
-            flex-wrap: wrap;
-          }
-          a {
-            font-family: 'montserratligth', sans-serif;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 1.2em;
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-            margin-bottom: 20px;
-          }
-        }
-      }
-    }
+  }
+}
 </style>

@@ -12,7 +12,7 @@
   import reviews from '../components/reviews'
 
   export default {
-    name: 'App',
+    name: 'Reviews',
     components: {
       headerNav,
       footerNav,

@@ -12,7 +12,7 @@
   import services from '../components/servises'
 
   export default {
-    name: 'App',
+    name: 'Services',
     components: {
       headerNav,
       footerNav,

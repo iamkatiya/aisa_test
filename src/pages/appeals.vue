@@ -58,7 +58,7 @@
   import footerNav from '../components/footer.vue'
 
   export default {
-    name: 'App',
+    name: 'Appeals',
     components: {
       headerNav,
       footerNav
