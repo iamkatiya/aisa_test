@@ -67,6 +67,7 @@
     &__head {
       font-size: 2.7em;
       margin-bottom: 0.25em;
+      margin-top: 0;
     }
     &__btn {
       display: block;

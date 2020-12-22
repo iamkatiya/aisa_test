@@ -24,7 +24,6 @@ const moduleHolidays = {
       return axios
         .get('https://next.json-generator.com/api/json/get/41l9bOY3Y')
         .then(response => {
-          console.log(response.data);
           commit('setJsonData', response.data)
         });
     }

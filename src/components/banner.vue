@@ -75,13 +75,13 @@
 
 <style lang="scss">
     .banner {
+      padding-top: 3em;
         &__text {
             width: 45%;
             padding-right: 2em;
             box-sizing: border-box;
         }
-        &__carousel {
-          margin-top: 3em;
+        &__carousel {;
             width: 55%;
             .owl-carousel.owl-loaded {
                 display: flex;
