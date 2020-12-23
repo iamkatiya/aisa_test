@@ -299,6 +299,13 @@
       }
     }
   }
+  @media (max-width: 1200px) {
+    .holidays {
+      &__filters {
+        width: 100%;
+      }
+    }
+  }
   @media (max-width: 991px) {
     .holidays {
       &__text {
