@@ -97,7 +97,6 @@
     },
     data() {
       return {
-        holidays: [],
         filterValue: '',
         filterDate: null,
         filteredArr: [],
@@ -116,12 +115,11 @@
     },
     mounted() {
       this.$store.dispatch('getJson')
-      this.holidays = this.$store.state.holidays.jsonData
-      this.filteredArr = this.holidays
+      this.filteredArr = this.$store.state.holidays.jsonData
     },
     methods: {
       filter() {
-        this.filteredArr = this.holidays
+        this.filteredArr = this.$store.state.holidays.jsonData
         if (this.filterValue !== '') {
           this.filteredArr = this.filteredArr.filter(item => item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase())
           )
@@ -176,6 +174,7 @@
         border-radius: 4px;
         outline: none;
         box-sizing: border-box;
+        height: 37px;
       }
     }
     &__item {

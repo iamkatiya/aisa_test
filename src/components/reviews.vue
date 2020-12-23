@@ -10,8 +10,8 @@
     <section class="reviews-list container">
       <carousel
         class="reviews-list__carousel"
-        :responsive="{0:{items:1}, 700:{items:4}}"
-        :dots="false"
+        :items="1"
+        :dots="true"
         :nav="false"
         :autoplay="true"
       >
@@ -63,6 +63,18 @@
             Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
           </div>
         </div>
+        <div class="reviews-list__item">
+          <div class="reviews-list__item__head">
+            <img
+                    alt="person"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU"
+            >
+            <p>Иван И.</p>
+          </div>
+          <div class="reviews-list__item__text">
+            Заказали поздравление от Деда Мороза для детей и остались довольны. Обязательно обратимся к вам еще!
+          </div>
+        </div>
       </carousel>
     </section>
   </div>
@@ -101,9 +113,11 @@
             &__head {
                 display: flex;
                 align-items: center;
+                justify-content: center;
             }
             &__text {
                 padding-top: 20px;
+                text-align: center;
             }
         }
     }
