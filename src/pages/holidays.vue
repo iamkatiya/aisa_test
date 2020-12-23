@@ -55,7 +55,7 @@
           К сожалению, по вашему запросу ничего не найдено
         </div>
         <div
-          v-for="(item, itemIndex) in filteredArr"
+          v-for="(item, itemIndex) in paginationFunc"
           v-else
           :key="itemIndex"
           class="holidays__item"
@@ -72,6 +72,12 @@
           </div>
         </div>
       </div>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="filteredArr.length"
+        :per-page="perPage"
+        aria-controls="my-table"
+      />
     </div>
     <footer-nav />
   </div>
@@ -95,12 +101,17 @@
         filterValue: '',
         filterDate: null,
         filteredArr: [],
-        date: '2019-10-09'
+        date: '2019-10-09',
+        perPage: 5,
+        currentPage: 1
       }
     },
     computed: {
       isEmptyResults: function () {
         return this.filteredArr.length === 0
+      },
+      paginationFunc: function () {
+        return this.filteredArr.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage)
       }
     },
     mounted() {
@@ -136,13 +147,15 @@
           return 0
         }
         return this.filteredArr.sort(compare)
-      },
+      }
     },
   }
 </script>
 
 <style lang="scss">
   @import '../../node_modules/vue2-datepicker/index.css';
+  @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+  @import '../../node_modules/bootstrap-vue/src/index.scss';
   .holidays {
     flex-wrap: wrap;
     margin-top: 60px;
@@ -257,6 +270,28 @@
     height: 37px;
     padding: 10px;
   }
+  .pagination {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .page-item {
+    &.active {
+      .page-link {
+        background-color: #6d8fb0;
+        border-color: #6d8fb0;
+      }
+    }
+  }
+  .page-link {
+    color: #2c3e50;
+  }
+  .container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+  }
   @media (max-width: 1500px) {
     .holidays {
       &__item {
@@ -286,4 +321,5 @@
       }
     }
   }
+
 </style>

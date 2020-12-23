@@ -82,6 +82,8 @@
         flex: 100%;
         width: 100%;
         margin-bottom: 30px;
+        text-align: center;
+        margin-right: 0;
     }
 }
 </style>

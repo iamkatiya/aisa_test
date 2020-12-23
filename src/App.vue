@@ -108,5 +108,13 @@
       font-size: 20px;
     }
   }
+  @media (max-width: 768px) {
+    .logotype {
+      justify-content: center;
+      img {
+        width: 50px;
+      }
+    }
+  }
 
 </style>
