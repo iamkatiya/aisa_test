@@ -126,6 +126,7 @@
                 width: 100%;
                 order: 2;
                 padding-right: 0;
+                margin-top: 20px;
             }
         }
     }

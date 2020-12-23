@@ -66,8 +66,8 @@
         <div class="reviews-list__item">
           <div class="reviews-list__item__head">
             <img
-                    alt="person"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU"
+              alt="person"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJa-PRmt4Un_Cg7GdusF3SgxyNbk0J0nnaFw&usqp=CAU"
             >
             <p>Иван И.</p>
           </div>

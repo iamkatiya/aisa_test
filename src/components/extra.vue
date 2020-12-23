@@ -41,12 +41,16 @@
         &__additional {
              display: flex;
              width: 50%;
-             margin-right: 30px;
+             margin: 0 20px;
         }
         &__reviews {
             display: flex;
             width: 50%;
-            margin-left: 30px;
+            margin: 0 20px;
+        }
+        &.container {
+          padding-left: 0;
+          padding-right: 0;
         }
     }
     .additional,
@@ -66,6 +70,9 @@
             b {
                 font-size: 1.25em;
                 font-weight: bold;
+            }
+            p {
+                line-height: 110%;
             }
         }
     }

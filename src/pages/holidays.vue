@@ -10,15 +10,18 @@
           Фильтр праздников:
         </div>
         <div class="filter__item">
-          <p>по названию</p>
+          <label for="holiday-item">по названию</label>
           <input
+            id="holiday-item"
             v-model="filterValue"
+            @change="filter"
             @keyup="filter"
           >
         </div>
         <div class="filter__item">
-          <p>по дате</p>
+          <label for="holiday-date">по дате</label>
           <date-picker
+            id="holiday-date"
             v-model="filterDate"
             value-type="format"
             @change="filter"
@@ -164,7 +167,9 @@
       min-height: 70vh;
     }
     &__filters {
-      width: 35%;
+      width: 50%;
+      display: flex;
+      flex-wrap: wrap;
       margin-bottom: 40px;
       padding: 10px;
       input {
@@ -224,9 +229,11 @@
   .filter {
     &__head {
       font-size: 2em;
+      width: 100%;
     }
     &__item {
-      p {
+      width: 50%;
+      label {
         margin-bottom: 5px;
         margin-top: 15px;
       }
@@ -236,6 +243,7 @@
     &__head {
       font-size: 2em;
       margin-bottom: 15px;
+      width: 100%;
     }
     &__item {
       display: flex;
