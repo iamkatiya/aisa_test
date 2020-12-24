@@ -86,12 +86,14 @@
           </div>
         </div>
         <button
+          v-enableScroll
           type="submit"
           class="feedback-form__btn about-content__btn"
         >
           Отправить обращение
         </button>
         <router-link
+          v-enableScroll
           class="feedback-form__appeals"
           :to="'/appeals'"
         >
