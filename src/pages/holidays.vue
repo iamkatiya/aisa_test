@@ -46,7 +46,8 @@
           Отсортировано {{ sortValue }}
           <div
             v-if="sortDropdown"
-            class="sort__dropdown">
+            class="sort__dropdown"
+          >
             <div
               class="sort__item"
               @click="upSort"
@@ -179,6 +180,19 @@
   @import '../../node_modules/vue2-datepicker/index.css';
   @import '../../node_modules/bootstrap/scss/bootstrap.scss';
   @import '../../node_modules/bootstrap-vue/src/index.scss';
+  h1 {
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+  }
+  .header {
+    .container {
+      box-sizing: content-box;
+    }
+  }
+  .logotype {
+    height: 87px;
+  }
   .holidays {
     flex-wrap: wrap;
     margin-top: 60px;

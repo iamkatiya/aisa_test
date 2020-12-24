@@ -41,8 +41,14 @@
         class="header__button"
         @click="openFeedbackWindow"
       >
-        Связаться
+        <img src="@/assets/phone.svg">
       </div>
+      <button
+        class="header__signIn"
+        @click="openSignWindow"
+      >
+        Войти
+      </button>
     </div>
     <transition name="modal-fade">
       <div
@@ -78,20 +84,27 @@
       v-show="isVisibleModal"
       @closeModal="closeModal"
     />
+    <modal-sign
+      v-show="isSignModal"
+      @closeModal="closeSignModal"
+    />
   </header>
 </template>
 
 <script>
   import modalFeedback from './modal-feedback'
+  import modalSign from './modal-sign'
 
   export default {
     components: {
-      modalFeedback
+      modalFeedback,
+      modalSign
     },
     data() {
       return {
         burgerMenu: false,
-        isVisibleModal: false
+        isVisibleModal: false,
+        isSignModal: false
       }
     },
     created () {
@@ -109,10 +122,16 @@
         this.isVisibleModal = true
         this.$disableContent.$emit('toggleScroll', 'disabled')
       },
+      openSignWindow () {
+        this.isSignModal = true
+      },
       closeModal () {
         this.isVisibleModal = false
         this.$disableContent.$emit('toggleScroll', 'enabled')
       },
+      closeSignModal () {
+        this.isSignModal = false
+      }
     }
   }
 </script>
@@ -160,17 +179,39 @@
                 filter: invert(1);
             }
         }
+        &__signIn {
+          margin-left: 30px;
+          padding: 10px 25px;
+          font-size: 1.1em;
+          border-radius: 8px;
+          border: transparent;
+          outline: none;
+          background: rgba(255, 255, 255, 0.56);
+          color: #2c3e50;
+          font-family: "montserratligth", sans-serif;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.32);
+          }
+        }
         &__button {
-            display: inline-table;
-            padding: 15px 25px;
+            display: flex;
+            padding: 10px;
             margin-left: 105px;
             border-radius: 8px;
             font-size: 1.3em;
             background-color: rgba(255, 255, 255, 0.42);
             cursor: pointer;
+            width: 50px;
             transition: 0.3s;
+            box-sizing: content-box;
             &:hover {
-                background-color: rgba(255, 255, 255, 0.72);
+                background-color: rgba(255, 255, 255, 0.32);
+            }
+            img {
+                width: 100%;
+              filter: invert(1);
             }
         }
     }
