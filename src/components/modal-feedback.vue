@@ -287,13 +287,34 @@
         .feedback-form {
             &__window {
                 width: 90%;
+                height: 80vh;
                 padding: 20px;
+            }
+            &__btn {
+                margin-top: 15px;
+            }
+            &__appeals {
+                font-size: 0.9em;
             }
             &__title {
                 font-size: 2em;
             }
+            &__item {
+              margin-top: 20px;
+                input {
+                  font-size: 1em;
+                  padding: 10px 15px;
+                }
+            }
+            &__radiobuttons {
+              margin-top: 20px;
+            }
         }
         .checkboxes {
+            &__head {
+                font-weight: 900;
+                font-size: 1.1em;
+            }
             &__item {
                 width: 100%;
                 margin-bottom: 15px;
@@ -303,11 +324,11 @@
     @media (max-width: 576px) {
       .feedback-form {
         &__window {
-          padding: 5px;
+          margin: 5px;
+          width: 100%;
         }
         &__title {
-          font-size: 1em;
-          margin-top: 1em;
+          margin-top: 0.3em;
         }
       }
       .modal-content__close {

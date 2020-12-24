@@ -43,7 +43,7 @@
           class="sort__value"
           @click="sortDropdown =! sortDropdown"
         >
-          {{ sortValue }}
+          Отсортировано {{ sortValue }}
           <div
             v-if="sortDropdown"
             class="sort__dropdown">
@@ -292,7 +292,7 @@
       padding: 5px 10px;
       height: 37px;
       margin-bottom: 53px;
-      width: 300px;
+      width: 370px;
       border: 1px solid #2c3e50;
       border-radius: 4px;
       outline: none;
