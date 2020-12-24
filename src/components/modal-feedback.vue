@@ -225,6 +225,10 @@
         border-radius: 6px;
         outline: none;
       }
+      label {
+          display: block;
+          padding-bottom: 10px;
+      }
     }
     &__file {
       input {
@@ -346,6 +350,9 @@
         &__window {
           margin: 5px;
           width: 100%;
+          height: auto;
+          max-height: 80vh;
+          overflow-y: scroll;
         }
         &__title {
           margin-top: 0.3em;

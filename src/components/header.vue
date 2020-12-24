@@ -270,4 +270,23 @@
         }
       }
     }
+    @media (max-width: 576px) {
+      .header {
+        &__signIn {
+          margin-left: 0;
+          padding: 5px 15px;
+          order: 2;
+        }
+        &__logo {
+          img {
+            width: 35px;
+            margin-right: 0;
+          }
+        }
+        &__burger {
+          width: 30px;
+          order: 3;
+        }
+      }
+    }
 </style>

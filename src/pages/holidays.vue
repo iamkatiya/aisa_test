@@ -409,5 +409,32 @@
       }
     }
   }
+  @media (max-width: 576px) {
+    .holidays {
+      &__filters {
+        padding: 0;
+        input {
+          width: 290px;
+        }
+      }
+    }
+    .filter {
+      &__head {
+        font-size: 1.6em;
+      }
+    }
+    .sort {
+      &__head {
+        font-size: 1.6em;
+      }
+      &__value {
+        font-size: 0.8em;
+        padding: 8px 10px;
+      }
+    }
+    .mx-icon-calendar, .mx-icon-clear {
+      right: 20px;
+    }
+  }
 
 </style>
