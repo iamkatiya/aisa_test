@@ -19,10 +19,17 @@
           >
         </div>
         <div class="filter__item">
-          <label for="holiday-date">по дате</label>
+          <label for="holiday-date-before">с</label>
           <date-picker
-            id="holiday-date"
-            v-model="filterDate"
+            id="holiday-date-before"
+            v-model="filterDateBefore"
+            value-type="format"
+            @change="filter"
+          />
+          <label for="holiday-date-after">по</label>
+          <date-picker
+            id="holiday-date-after"
+            v-model="filterDateAfter"
             value-type="format"
             @change="filter"
           />
@@ -33,21 +40,26 @@
           Сортировка праздников:
         </div>
         <div
-          class="sort__item"
-          @click="upSort"
+          class="sort__value"
+          @click="sortDropdown =! sortDropdown"
         >
-          По дате
-          <img src="@/assets/arrow-up.svg">
-        </div>
-        <div
-          class="sort__item"
-          @click="downSort"
-        >
-          По дате
-          <img
-            class="revert-arrow"
-            src="@/assets/arrow-up.svg"
-          >
+          {{ sortValue }}
+          <div
+            v-if="sortDropdown"
+            class="sort__dropdown">
+            <div
+              class="sort__item"
+              @click="upSort"
+            >
+              по возрастанию даты
+            </div>
+            <div
+              class="sort__item"
+              @click="downSort"
+            >
+              по убыванию даты
+            </div>
+          </div>
         </div>
       </div>
       <div class="holidays__wrap">
@@ -101,11 +113,14 @@
     data() {
       return {
         filterValue: '',
-        filterDate: null,
+        filterDateBefore: null,
+        filterDateAfter: null,
         filteredArr: [],
         date: '2019-10-09',
-        perPage: 5,
-        currentPage: 1
+        perPage: 4,
+        currentPage: 1,
+        sortDropdown: false,
+        sortValue: 'по умолчанию'
       }
     },
     computed: {
@@ -127,9 +142,14 @@
           this.filteredArr = this.filteredArr.filter(item => item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase())
           )
         }
-        if (this.filterDate !== null) {
+        if (this.filterDateBefore !== null) {
           this.filteredArr = this.filteredArr.filter(item => {
-            return Date.parse(item.date) === Date.parse(this.filterDate)
+            return Date.parse(item.date) >= Date.parse(this.filterDateBefore)
+          })
+        }
+        if (this.filterDateAfter !== null) {
+          this.filteredArr = this.filteredArr.filter(item => {
+            return Date.parse(item.date) <= Date.parse(this.filterDateAfter)
           })
         }
       },
@@ -139,6 +159,7 @@
           if (a.date > b.date) return 1
           return 0
         }
+        this.sortValue = 'по возрастанию даты'
         return this.filteredArr.sort(compare)
       },
       downSort() {
@@ -147,6 +168,7 @@
           if (a.date > b.date) return -1
           return 0
         }
+        this.sortValue = 'по убыванию даты'
         return this.filteredArr.sort(compare)
       }
     },
@@ -236,6 +258,7 @@
       label {
         margin-bottom: 5px;
         margin-top: 15px;
+        width: 100%;
       }
     }
   }
@@ -249,10 +272,12 @@
       display: flex;
       align-items: center;
       margin-bottom: 10px;
-      padding: 8px 0;
       cursor: pointer;
       transition: 0.3s;
-      font-size: 1.3em;
+      font-size: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
       &:hover {
         filter: contrast(0.5);
       }
@@ -261,6 +286,33 @@
         height: 22px;
         margin-left: 10px;
       }
+    }
+    &__value {
+      position: relative;
+      padding: 5px 10px;
+      height: 37px;
+      margin-bottom: 53px;
+      width: 300px;
+      border: 1px solid #2c3e50;
+      border-radius: 4px;
+      outline: none;
+      box-sizing: border-box;
+      background-image: url("../assets/arrow-dropdown.svg");
+      background-repeat: no-repeat;
+      background-position: 97% 50%;
+      background-size: 17px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    &__dropdown {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      background-color: rgba(196, 196, 196, 0.54);
+      padding: 10px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
   }
   .revert-arrow {
