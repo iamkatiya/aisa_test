@@ -64,11 +64,9 @@
     methods: {
       showModal() {
         this.isVisibleModal = true
-        this.$disableContent.$emit('toggleScroll', 'disabled')
       },
       closeModal() {
         this.isVisibleModal = false
-        this.$disableContent.$emit('toggleScroll', 'enabled')
       }
     }
   }

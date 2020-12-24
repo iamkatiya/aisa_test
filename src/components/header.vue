@@ -107,27 +107,15 @@
         isSignModal: false
       }
     },
-    created () {
-
-      this.$disableContent.$on('toggleScroll', (action)=>{
-        if (action === 'disabled') {
-          document.body.style.overflow = 'hidden'
-        } else {
-          document.body.style.overflow = 'auto'
-        }
-      });
-    },
     methods: {
       openFeedbackWindow () {
         this.isVisibleModal = true
-        this.$disableContent.$emit('toggleScroll', 'disabled')
       },
       openSignWindow () {
         this.isSignModal = true
       },
       closeModal () {
         this.isVisibleModal = false
-        this.$disableContent.$emit('toggleScroll', 'enabled')
       },
       closeSignModal () {
         this.isSignModal = false
@@ -245,6 +233,7 @@
           max-width: 900px;
           justify-content: space-between;
           align-items: center;
+          box-sizing: border-box;
         }
         &__nav {
           display: none;

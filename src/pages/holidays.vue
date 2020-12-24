@@ -371,11 +371,19 @@
         width: 100%;
         margin-right: 0;
       }
+      &__filters {
+        width: 100%;
+      }
+    }
+    .filter {
+      &__item {
+        width: 30%;
+      }
     }
   }
   @media (max-width: 1200px) {
-    .holidays {
-      &__filters {
+    .filter {
+      &__item {
         width: 100%;
       }
     }
