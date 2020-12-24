@@ -98,6 +98,7 @@
           Посмотреть все обращения!
         </router-link>
         <div
+          v-enableScroll
           class="modal-content__close"
           @click="closeModal"
         >

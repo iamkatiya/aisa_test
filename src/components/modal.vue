@@ -6,6 +6,7 @@
           Вы открыли модальное окно!
         </div>
         <div
+          v-enableScroll
           class="modal-content__close"
           @click="close"
         >

@@ -38,12 +38,14 @@
         >
       </div>
       <div
+        v-disableScroll
         class="header__button"
         @click="openFeedbackWindow"
       >
         <img src="@/assets/phone.svg">
       </div>
       <button
+        v-disableScroll
         class="header__signIn"
         @click="openSignWindow"
       >
