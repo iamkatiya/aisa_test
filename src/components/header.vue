@@ -186,16 +186,19 @@
           }
         }
         &__button {
-            display: flex;
-            padding: 10px;
-            margin-left: 105px;
-            border-radius: 8px;
-            font-size: 1.3em;
-            background-color: rgba(255, 255, 255, 0.42);
-            cursor: pointer;
-            width: 50px;
-            transition: 0.3s;
-            box-sizing: content-box;
+          display: flex;
+          padding: 10px;
+          margin-left: 105px;
+          border-radius: 8px;
+          font-size: 1.3em;
+          background-color: rgba(255, 255, 255, 0.42);
+          cursor: pointer;
+          transition: 0.3s;
+          box-sizing: border-box;
+          max-width: 45px;
+          max-height: 45px;
+          width: 100%;
+          height: 100%;
             &:hover {
                 background-color: rgba(255, 255, 255, 0.32);
             }
