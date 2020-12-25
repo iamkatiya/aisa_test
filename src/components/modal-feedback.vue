@@ -196,7 +196,8 @@
     &__sign {
       height: auto;
       @media (max-height: 991px) {
-        height: 75vh;
+        height: auto;
+        max-height: 75vh;
         overflow-y: scroll;
       }
     }
@@ -207,12 +208,30 @@
         color: rgba(0, 0, 217, 0.83);
       }
     }
+    &__password {
+      position: absolute;
+      width: 40px;
+      height: 36px;
+      right: 27%;
+      top: 38px;
+      cursor: pointer;
+    }
+    &__generate {
+      display: flex;
+      align-items: center;
+      background-color: #6d8fb0;
+      border-radius: 8px;
+      color: white;
+      padding: 10px;
+      margin-left: auto;
+    }
     &__title {
       font-size: 3em;
       text-align: center;
     }
     &__item {
       margin-top: 40px;
+      position: relative;
       input {
         box-sizing: border-box;
         width: 100%;

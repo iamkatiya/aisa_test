@@ -109,6 +109,15 @@
         isSignModal: false
       }
     },
+    created () {
+      document.onkeydown = evt => {
+        evt = evt || window.event;
+        if (evt.keyCode === 27) {
+          this.isVisibleFeedback = false
+          this.isSignModal = false
+        }
+      }
+    },
     methods: {
       openFeedbackWindow () {
         this.isVisibleFeedback = true

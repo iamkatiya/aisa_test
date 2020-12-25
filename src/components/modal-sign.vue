@@ -96,16 +96,36 @@
             trim
           >
         </div>
-        <div class="feedback-form__item">
+        <div class="feedback-form__item create-pass">
           <label for="loginPass">
             Придумайте пароль
           </label>
           <input
             id="loginPass"
-            type="password"
-            placeholder="•••••••••"
+            v-model="loginPassword"
+            :type="eyeActive ? 'password' : 'text'"
+            placeholder="Не менее 6 символов"
             trim
           >
+          <div
+            class="feedback-form__password"
+            @click="eyeActive = !eyeActive"
+          >
+            <img
+              v-if="eyeActive"
+              src="@/assets/eye.svg"
+            >
+            <img
+              v-else
+              src="@/assets/eye-disable.svg"
+            >
+          </div>
+          <div
+            class="feedback-form__generate"
+            @click="generatePass"
+          >
+            Сгенерировать
+          </div>
         </div>
         <button
           type="submit"
@@ -142,7 +162,9 @@
     data() {
       return {
         loginForm: true,
-        registrationForm: false
+        registrationForm: false,
+        eyeActive: true,
+        loginPassword: ''
       }
     },
     validations: {
@@ -158,9 +180,27 @@
     methods: {
       closeSignModal () {
         this.$emit('closeModal');
+      },
+      generatePass() {
+        var generator = require('generate-password');
+        this.loginPassword = generator.generate({
+          length: 10,
+          numbers: true
+        });
       }
     }
   }
 </script>
 
-
+<style lang="scss" scoped>
+  .create-pass {
+    display: flex;
+    flex-wrap: wrap;
+    input {
+      width: 75%;
+    }
+    label {
+      width: 100%;
+    }
+  }
+</style>

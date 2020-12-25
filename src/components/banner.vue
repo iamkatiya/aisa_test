@@ -62,6 +62,14 @@
         isVisibleModal: false
       }
     },
+    created () {
+      document.onkeydown = evt => {
+        evt = evt || window.event;
+        if (evt.keyCode === 27) {
+          this.isVisibleModal = false
+        }
+      }
+    },
     methods: {
       showModal() {
         this.isVisibleModal = true

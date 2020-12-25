@@ -220,7 +220,7 @@
             width: 50%;
             display: flex;
             flex-wrap: wrap;
-            margin-bottom: 60px;
+            margin-bottom: 100px;
             padding: 10px;
 
             input {
