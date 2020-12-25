@@ -47,7 +47,6 @@
           </span>
         </div>
         <div
-          v-enableScroll
           class="modal-content__close"
           @click="closeSignModal"
         >
@@ -127,7 +126,6 @@
           @click="closeSignModal"
         >
           <img
-            v-enableScroll
             class="modal-content__close"
             src="@/assets/close.svg"
           >

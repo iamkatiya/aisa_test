@@ -8,19 +8,14 @@ Vue.use(Vuelidate)
 
 Vue.config.productionTip = false;
 
-Vue.directive("disableScroll",{
-  bind(el) {
-    el.addEventListener('click', function(){
+Vue.directive("changeScroll",{
+  update(el, status) {
+    console.log(status)
+    if (status.value === true) {
       document.body.style.overflow = 'hidden'
-    });
-  }
-});
-
-Vue.directive("enableScroll",{
-  bind(el) {
-    el.addEventListener('click', function(){
+    } else {
       document.body.style.overflow = 'auto'
-    });
+    }
   }
 });
 

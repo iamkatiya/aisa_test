@@ -38,14 +38,12 @@
         >
       </div>
       <div
-        v-disableScroll
         class="header__button"
         @click="openFeedbackWindow"
       >
         <img src="@/assets/phone.svg">
       </div>
       <button
-        v-disableScroll
         class="header__signIn"
         @click="openSignWindow"
       >
@@ -83,11 +81,13 @@
       </div>
     </transition>
     <modal-feedback
-      v-show="isVisibleModal"
+      v-show="isVisibleFeedback"
+      v-changeScroll="isVisibleFeedback || isSignModal"
       @closeModal="closeModal"
     />
     <modal-sign
       v-show="isSignModal"
+      v-changeScroll="isSignModal || isVisibleFeedback"
       @closeModal="closeSignModal"
     />
   </header>
@@ -105,19 +105,19 @@
     data() {
       return {
         burgerMenu: false,
-        isVisibleModal: false,
+        isVisibleFeedback: false,
         isSignModal: false
       }
     },
     methods: {
       openFeedbackWindow () {
-        this.isVisibleModal = true
+        this.isVisibleFeedback = true
       },
       openSignWindow () {
         this.isSignModal = true
       },
       closeModal () {
-        this.isVisibleModal = false
+        this.isVisibleFeedback = false
       },
       closeSignModal () {
         this.isSignModal = false

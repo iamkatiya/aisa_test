@@ -42,6 +42,10 @@
     white-space: nowrap;
     align-items: center;
     text-decoration: none;
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
   }
   .logotype img {
     width: 60px;
