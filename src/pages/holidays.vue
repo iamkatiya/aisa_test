@@ -84,7 +84,7 @@
           </div>
           <div class="holidays__text holidays__date">
             Дата проведения:
-            {{ item.date.toString() }}
+            {{ new Date(item.date).getDate() + ' ' + months[(new Date(item.date).getMonth())] + ' ' + new Date(item.date).getFullYear() + ' года' }}
           </div>
         </div>
       </div>
@@ -121,7 +121,8 @@
         perPage: 4,
         currentPage: 1,
         sortDropdown: false,
-        sortValue: 'по умолчанию'
+        sortValue: 'по умолчанию',
+        months: 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',')
       }
     },
     computed: {
@@ -130,7 +131,7 @@
       },
       paginationFunc: function () {
         return this.filteredArr.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage)
-      }
+      },
     },
     mounted() {
       this.$store.dispatch('getJson')

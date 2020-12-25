@@ -10,7 +10,6 @@ Vue.config.productionTip = false;
 
 Vue.directive("changeScroll",{
   update(el, status) {
-    console.log(status)
     if (status.value === true) {
       document.body.style.overflow = 'hidden'
     } else {
