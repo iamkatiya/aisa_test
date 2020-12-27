@@ -39,13 +39,13 @@
       </div>
       <div
         class="header__button"
-        @click="openFeedbackWindow"
+        @click="isVisibleFeedback = true"
       >
         <img src="@/assets/phone.svg">
       </div>
       <button
         class="header__signIn"
-        @click="openSignWindow"
+        @click="isSignModal = true"
       >
         Войти
       </button>
@@ -82,13 +82,13 @@
     </transition>
     <modal-feedback
       v-show="isVisibleFeedback"
-      v-changeScroll="isVisibleFeedback || isSignModal"
-      @closeModal="closeModal"
+      v-changeScroll
+      @closeModal="isVisibleFeedback = false"
     />
     <modal-sign
       v-show="isSignModal"
-      v-changeScroll="isSignModal || isVisibleFeedback"
-      @closeModal="closeSignModal"
+      v-changeScroll
+      @closeModal="isSignModal = false"
     />
   </header>
 </template>
@@ -116,20 +116,6 @@
           this.isVisibleFeedback = false
           this.isSignModal = false
         }
-      }
-    },
-    methods: {
-      openFeedbackWindow () {
-        this.isVisibleFeedback = true
-      },
-      openSignWindow () {
-        this.isSignModal = true
-      },
-      closeModal () {
-        this.isVisibleFeedback = false
-      },
-      closeSignModal () {
-        this.isSignModal = false
       }
     }
   }

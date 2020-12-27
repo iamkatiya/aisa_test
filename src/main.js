@@ -9,12 +9,11 @@ Vue.use(Vuelidate)
 Vue.config.productionTip = false;
 
 Vue.directive("changeScroll",{
-  update(el, status) {
-    if (status.value === true) {
+  bind() {
       document.body.style.overflow = 'hidden'
-    } else {
+  },
+  unbind() {
       document.body.style.overflow = 'auto'
-    }
   }
 });
 

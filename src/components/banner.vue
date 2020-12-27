@@ -42,7 +42,7 @@
     </div>
     <modal
       v-show="isVisibleModal"
-      v-changeScroll="isVisibleModal"
+      v-changeScroll
       @close="closeModal"
     />
   </section>
@@ -60,14 +60,6 @@
     data() {
       return {
         isVisibleModal: false
-      }
-    },
-    created () {
-      document.onkeydown = evt => {
-        evt = evt || window.event;
-        if (evt.keyCode === 27) {
-          this.isVisibleModal = false
-        }
       }
     },
     methods: {

@@ -7,7 +7,7 @@
         v-if="loginForm"
         class="feedback-form__window feedback-form__sign"
       >
-        <div class="feedback-form__title">
+        <div class="feedback-form__title sign-form__title">
           Вход в систему
         </div>
         <div class="feedback-form__item">
@@ -27,10 +27,24 @@
           </label>
           <input
             id="passwordInput"
-            type="password"
+            v-model="loginPassword"
+            :type="eyeActive ? 'password' : 'text'"
             placeholder="•••••••••"
             trim
           >
+          <div
+            class="feedback-form__password auth-password"
+            @click="eyeActive = !eyeActive"
+          >
+            <img
+              v-if="eyeActive"
+              src="@/assets/eye.svg"
+            >
+            <img
+              v-else
+              src="@/assets/eye-disable.svg"
+            >
+          </div>
         </div>
         <button
           type="submit"
@@ -41,7 +55,7 @@
         <div class="feedback-form__need-acc">
           Нужен аккаунт?
           <span
-            @click="loginForm = false, registrationForm = true"
+            @click="loginForm = false"
           >
             Создайте его здесь
           </span>
@@ -102,7 +116,7 @@
           </label>
           <input
             id="loginPass"
-            v-model="loginPassword"
+            v-model="createPassword"
             :type="eyeActive ? 'password' : 'text'"
             placeholder="Не менее 6 символов"
             trim
@@ -136,7 +150,7 @@
         <div class="feedback-form__need-acc">
           Уже есть аккаунт?
           <span
-            @click="loginForm = true, registrationForm = false"
+            @click="loginForm = true"
           >
             Войдите здесь
           </span>
@@ -162,8 +176,8 @@
     data() {
       return {
         loginForm: true,
-        registrationForm: false,
         eyeActive: true,
+        createPassword: '',
         loginPassword: ''
       }
     },
@@ -183,7 +197,7 @@
       },
       generatePass() {
         var generator = require('generate-password');
-        this.loginPassword = generator.generate({
+        this.createPassword = generator.generate({
           length: 10,
           numbers: true
         });
@@ -201,6 +215,13 @@
     }
     label {
       width: 100%;
+    }
+  }
+  @media (max-width: 1650px) {
+    .create-pass {
+      input {
+        width: 100%;
+      }
     }
   }
 </style>

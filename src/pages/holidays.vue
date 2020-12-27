@@ -409,26 +409,41 @@
     @media (max-width: 1500px) {
         .holidays {
             &__item {
-                width: 100%;
                 margin-right: 0;
             }
 
             &__filters {
+              input {
                 width: 100%;
+              }
             }
         }
         .filter {
             &__item {
-                width: 30%;
+                width: calc(50% - 20px);
+                margin-right: 10px;
             }
         }
     }
 
     @media (max-width: 1200px) {
-        .filter {
-            &__item {
-                width: 100%;
+        .holidays {
+          &__filters {
+            width: 100%;
+            input {
+              width: 100%;
+              max-width: 370px;
             }
+          }
+        }
+        .filter {
+          &__item {
+            width: 100%;
+          }
+        }
+        .mx-datepicker {
+          width: 100%;
+          max-width: 370px;
         }
     }
 
@@ -448,8 +463,10 @@
             }
 
             &__item {
+                width: 100%;
                 background-size: 50px;
                 padding-right: 25px;
+                margin-left: 0;
             }
 
             &__head {
@@ -464,13 +481,17 @@
                 padding: 0;
 
                 input {
-                    width: 290px;
+                    width: 100%;
+                    max-width: none;
                 }
             }
         }
         .filter {
             &__head {
                 font-size: 1.6em;
+            }
+            &__item {
+              margin-right: 0;
             }
         }
         .sort {
@@ -481,10 +502,14 @@
             &__value {
                 font-size: 0.8em;
                 padding: 8px 10px;
+                width: 100%;
             }
         }
         .mx-icon-calendar, .mx-icon-clear {
             right: 20px;
+        }
+        .mx-datepicker {
+          max-width: none;
         }
     }
 

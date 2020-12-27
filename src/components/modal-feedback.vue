@@ -193,8 +193,13 @@
         overflow-y: scroll;
       }
     }
+      &__btn {
+        margin-top: 35px;
+      }
     &__sign {
       height: auto;
+      padding: 30px;
+      width: 40%;
       @media (max-height: 991px) {
         height: auto;
         max-height: 75vh;
@@ -206,6 +211,11 @@
       margin-top: 30px;
       span {
         color: rgba(0, 0, 217, 0.83);
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          color: rgba(36, 43, 161, 0.67);
+        }
       }
     }
     &__password {
@@ -213,7 +223,7 @@
       width: 40px;
       height: 36px;
       right: 27%;
-      top: 38px;
+      bottom: 13px;
       cursor: pointer;
     }
     &__generate {
@@ -224,13 +234,18 @@
       color: white;
       padding: 10px;
       margin-left: auto;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover {
+        background-color: #576d83;
+      }
     }
     &__title {
       font-size: 3em;
       text-align: center;
     }
     &__item {
-      margin-top: 40px;
+      margin-top: 30px;
       position: relative;
       input {
         box-sizing: border-box;
@@ -313,6 +328,30 @@
             margin-bottom: 20px;
         }
     }
+    .auth-password {
+      right: 20px;
+    }
+    @media (max-width: 1650px) {
+        .feedback-form {
+          &__generate {
+            margin-right: auto;
+            margin-top: 20px;
+            padding: 15px;
+          }
+          &__password {
+            right: 15px;
+            bottom: 80px;
+          }
+        }
+      .auth-password {
+        bottom: 11px;
+      }
+    }
+    .sign-form {
+      &__title {
+        font-size: 2.5em;
+      }
+    }
     @media (max-width: 1500px) {
         .feedback-form {
             &__window {
@@ -349,6 +388,12 @@
             &__radiobuttons {
               margin-top: 20px;
             }
+            &__password {
+              bottom: 73px;
+            }
+        }
+        .auth-password {
+          bottom: 4px;
         }
         .checkboxes {
             &__head {
@@ -367,7 +412,7 @@
           margin: 5px;
           width: 100%;
           height: auto;
-          max-height: 80vh;
+          max-height: 99vh;
           overflow-y: scroll;
         }
         &__title {
