@@ -196,8 +196,8 @@ export default {
   mounted() {
     axios.get('/test', {
     })
-        .then((data) => {
-          console.log(data)
+        .then((response) => {
+          console.log(response)
         })
   },
   methods: {
