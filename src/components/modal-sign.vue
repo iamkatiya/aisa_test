@@ -48,6 +48,12 @@
             >
           </div>
         </div>
+        <div
+          v-if="loginError"
+          class="feedback-form__error"
+        >
+          Неверный логин и/или пароль
+        </div>
         <button
           type="button"
           class="feedback-form__btn about-content__btn"
@@ -182,6 +188,7 @@ export default {
       loginForm: true,
       eyeActive: true,
       createPassword: '',
+      loginError: false,
       loginData: [
         {
           userLogin: '',
@@ -215,9 +222,12 @@ export default {
       axios.post('/test', {login: this.loginData.userLogin, password: this.loginData.loginPassword})
         .then((response) => {
           if (response.data === 'success') {
-            this.$router.push('about')
+            this.$router.push('lk')
           } else {
-            console.log('oops..')
+            setTimeout(() => {
+              this.loginError = false
+            }, 2000)
+            this.loginError = true
           }
         })
     }
@@ -234,6 +244,11 @@ export default {
     }
     label {
       width: 100%;
+    }
+  }
+  .feedback-form {
+    &__error {
+      color: #b20000;
     }
   }
   @media (max-width: 1650px) {
