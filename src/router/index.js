@@ -35,6 +35,11 @@ const router = new VueRouter({
       path: '/holidays',
       name: 'holidays',
       component: () => import(/* webpackChunkName: 'appeals' */ '../pages/holidays')
+    },
+    {
+      path: '/lk',
+      name: 'lk',
+      component: () => import(/* webpackChunkName: 'appeals' */ '../pages/lk')
     }
   ]
 })

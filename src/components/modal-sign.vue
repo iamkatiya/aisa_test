@@ -1,8 +1,8 @@
 <template>
   <transition name="modal-fade">
     <div
-      class="feedback-form"
       v-changeScroll
+      class="feedback-form"
     >
       <form
         v-if="loginForm"
