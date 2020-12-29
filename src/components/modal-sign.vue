@@ -214,7 +214,11 @@ export default {
     logIn () {
       axios.post('/test', {login: this.loginData.userLogin, password: this.loginData.loginPassword})
         .then((response) => {
-          console.log(response)
+          if (response.data === 'success') {
+            this.$router.push('about')
+          } else {
+            console.log('oops..')
+          }
         })
     }
   }
