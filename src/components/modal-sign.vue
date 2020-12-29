@@ -17,6 +17,7 @@
           </label>
           <input
             id="loginInput"
+            v-model="loginData.userLogin"
             type="text"
             placeholder="example@mail.ru"
             trim
@@ -28,7 +29,7 @@
           </label>
           <input
             id="passwordInput"
-            v-model="loginPassword"
+            v-model="loginData.loginPassword"
             :type="eyeActive ? 'password' : 'text'"
             placeholder="•••••••••"
             trim
@@ -48,8 +49,9 @@
           </div>
         </div>
         <button
-          type="submit"
+          type="button"
           class="feedback-form__btn about-content__btn"
+          @click="logIn"
         >
           Войти
         </button>
@@ -180,7 +182,12 @@ export default {
       loginForm: true,
       eyeActive: true,
       createPassword: '',
-      loginPassword: ''
+      loginData: [
+        {
+          userLogin: '',
+          loginPassword: ''
+        }
+      ],
     }
   },
   validations: {
@@ -193,13 +200,6 @@ export default {
       }
     }
   },
-  mounted() {
-    axios.get('/test', {
-    })
-        .then((response) => {
-          console.log(response)
-        })
-  },
   methods: {
     closeSignModal () {
       this.$emit('closeModal')
@@ -210,6 +210,12 @@ export default {
         length: 10,
         numbers: true
       })
+    },
+    logIn () {
+      axios.post('/test', {login: this.loginData.userLogin, password: this.loginData.loginPassword})
+        .then((response) => {
+          console.log(response)
+        })
     }
   }
 }
