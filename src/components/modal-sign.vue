@@ -171,6 +171,7 @@
 </template>
 <script>
 import {required} from 'vuelidate/lib/validators'
+import axios from 'axios'
 
 export default {
   name: 'ModalFeedback',
@@ -191,6 +192,13 @@ export default {
         required
       }
     }
+  },
+  mounted() {
+    axios.get('/test', {
+    })
+        .then((data) => {
+          console.log(data)
+        })
   },
   methods: {
     closeSignModal () {
