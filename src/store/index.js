@@ -8,10 +8,9 @@ Vue.use(BootstrapVue)
 Vue.component('b-pagination', BPagination)
 Vue.use(Vuex)
 
-export default new Vuex.Store ({
+export default new Vuex.Store({
   modules: {
     appeals: appeals,
     holidays: holidays
   }
 })
-

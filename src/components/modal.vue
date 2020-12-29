@@ -19,14 +19,14 @@
   </transition>
 </template>
 <script>
-  export default {
-    name: 'Modal',
-    methods: {
-      close() {
-        this.$emit('close');
-      }
+export default {
+  name: 'Modal',
+  methods: {
+    close () {
+      this.$emit('close')
     }
   }
+}
 </script>
 <style lang="scss" scoped>
     .modal {

@@ -41,7 +41,7 @@
       </carousel>
     </div>
     <modal
-      v-show="isVisibleModal"
+      v-if="isVisibleModal"
       v-changeScroll
       @close="closeModal"
     />
@@ -49,28 +49,28 @@
 </template>
 
 <script>
-  import carousel from 'vue-owl-carousel2';
-  import modal from './modal.vue'
+import carousel from 'vue-owl-carousel2'
+import modal from './modal.vue'
 
-  export default {
-    components: {
-      carousel,
-      modal
+export default {
+  components: {
+    carousel,
+    modal
+  },
+  data () {
+    return {
+      isVisibleModal: false
+    }
+  },
+  methods: {
+    showModal () {
+      this.isVisibleModal = true
     },
-    data() {
-      return {
-        isVisibleModal: false
-      }
-    },
-    methods: {
-      showModal() {
-        this.isVisibleModal = true
-      },
-      closeModal() {
-        this.isVisibleModal = false
-      }
+    closeModal () {
+      this.isVisibleModal = false
     }
   }
+}
 
 </script>
 

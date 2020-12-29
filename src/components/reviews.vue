@@ -81,13 +81,13 @@
 </template>
 
 <script>
-  import carousel from 'vue-owl-carousel2';
+import carousel from 'vue-owl-carousel2'
 
-  export default {
-    components: {
-      carousel
-    }
+export default {
+  components: {
+    carousel
   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -136,4 +136,3 @@
       }
     }
 </style>
-

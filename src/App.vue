@@ -5,13 +5,12 @@
 </template>
 
 <script>
-  export default {
-    name: 'App'
-  }
+export default {
+  name: 'App'
+}
 </script>
 
 <style lang="scss">
-
   @font-face {
     font-family: "Oleo";
     src: url("./fonts/Oleoscript.ttf") format("truetype");

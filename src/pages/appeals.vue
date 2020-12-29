@@ -54,21 +54,21 @@
 </template>
 
 <script>
-  import headerNav from '../components/header.vue'
-  import footerNav from '../components/footer.vue'
+import headerNav from '../components/header.vue'
+import footerNav from '../components/footer.vue'
 
-  export default {
-    name: 'Appeals',
-    components: {
-      headerNav,
-      footerNav
-    },
-    data () {
-      return {
-        appeals: this.$store.state.appeals.formResults,
-      }
+export default {
+  name: 'Appeals',
+  components: {
+    headerNav,
+    footerNav
+  },
+  data () {
+    return {
+      appeals: this.$store.state.appeals.formResults
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

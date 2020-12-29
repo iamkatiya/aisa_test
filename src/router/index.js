@@ -1,8 +1,7 @@
 import Vue from 'vue'
-import VueRouter from "vue-router"
+import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
-
 
 const router = new VueRouter({
   mode: 'history',
@@ -36,8 +35,8 @@ const router = new VueRouter({
       path: '/holidays',
       name: 'holidays',
       component: () => import(/* webpackChunkName: 'appeals' */ '../pages/holidays')
-    },
+    }
   ]
-});
+})
 
 export default router

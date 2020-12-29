@@ -5,20 +5,19 @@ import Vuelidate from 'vuelidate'
 import router from './router/index'
 Vue.use(Vuelidate)
 
+Vue.config.productionTip = false
 
-Vue.config.productionTip = false;
-
-Vue.directive("changeScroll",{
-  bind() {
-      document.body.style.overflow = 'hidden'
+Vue.directive('changeScroll', {
+  bind () {
+    document.body.style.overflow = 'hidden'
   },
-  unbind() {
-      document.body.style.overflow = 'auto'
+  unbind () {
+    document.body.style.overflow = 'auto'
   }
-});
+})
 
 new Vue({
   router,
   store,
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')

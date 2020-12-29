@@ -81,46 +81,43 @@
       </div>
     </transition>
     <modal-feedback
-      v-show="isVisibleFeedback"
-      v-changeScroll
+      v-if="isVisibleFeedback"
       @closeModal="isVisibleFeedback = false"
     />
     <modal-sign
-      v-show="isSignModal"
-      v-changeScroll
+      v-if="isSignModal"
       @closeModal="isSignModal = false"
     />
   </header>
 </template>
 
 <script>
-  import modalFeedback from './modal-feedback'
-  import modalSign from './modal-sign'
+import modalFeedback from './modal-feedback'
+import modalSign from './modal-sign'
 
-  export default {
-    components: {
-      modalFeedback,
-      modalSign
-    },
-    data() {
-      return {
-        burgerMenu: false,
-        isVisibleFeedback: false,
-        isSignModal: false
-      }
-    },
-    created () {
-      document.onkeydown = evt => {
-        evt = evt || window.event;
-        if (evt.keyCode === 27) {
-          this.isVisibleFeedback = false
-          this.isSignModal = false
-        }
+export default {
+  components: {
+    modalFeedback,
+    modalSign
+  },
+  data () {
+    return {
+      burgerMenu: false,
+      isVisibleFeedback: false,
+      isSignModal: false
+    }
+  },
+  created () {
+    document.onkeydown = evt => {
+      evt = evt || window.event
+      if (evt.keyCode === 27) {
+        this.isVisibleFeedback = false
+        this.isSignModal = false
       }
     }
   }
+}
 </script>
-
 <style lang="scss" scoped>
     .header {
         background-color: #5b7a97;

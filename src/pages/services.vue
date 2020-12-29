@@ -7,16 +7,16 @@
 </template>
 
 <script>
-  import headerNav from '../components/header.vue'
-  import footerNav from '../components/footer.vue'
-  import services from '../components/servises'
+import headerNav from '../components/header.vue'
+import footerNav from '../components/footer.vue'
+import services from '../components/servises'
 
-  export default {
-    name: 'Services',
-    components: {
-      headerNav,
-      footerNav,
-      services
-    }
+export default {
+  name: 'Services',
+  components: {
+    headerNav,
+    footerNav,
+    services
   }
+}
 </script>

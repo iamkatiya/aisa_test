@@ -101,93 +101,93 @@
 </template>
 
 <script>
-  import headerNav from '../components/header.vue'
-  import footerNav from '../components/footer.vue'
-  import DatePicker from 'vue2-datepicker';
+import headerNav from '../components/header.vue'
+import footerNav from '../components/footer.vue'
+import DatePicker from 'vue2-datepicker'
 
-  export default {
-    name: 'Holidays',
-    components: {
-      headerNav,
-      footerNav,
-      DatePicker
+export default {
+  name: 'Holidays',
+  components: {
+    headerNav,
+    footerNav,
+    DatePicker
+  },
+  data () {
+    return {
+      filterValue: '',
+      filterDate: null,
+      filteredArr: [],
+      date: '2019-10-09',
+      perPage: 4,
+      currentPage: 1,
+      sortDropdown: false,
+      sortValue: 'по умолчанию',
+      months: 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',')
+    }
+  },
+  computed: {
+    isEmptyResults: function () {
+      return this.filteredArr.length === 0
     },
-    data() {
-      return {
-        filterValue: '',
-        filterDate: null,
-        filteredArr: [],
-        date: '2019-10-09',
-        perPage: 4,
-        currentPage: 1,
-        sortDropdown: false,
-        sortValue: 'по умолчанию',
-        months: 'января,февраля,марта,апреля,мая,июня,июля,августа,сентября,октября,ноября,декабря'.split(',')
-      }
-    },
-    computed: {
-      isEmptyResults: function () {
-        return this.filteredArr.length === 0
-      },
-      paginationFunc: function () {
-        return this.filteredArr.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage)
-      },
-    },
-    mounted() {
-      this.$store.dispatch('getJson')
+    paginationFunc: function () {
+      return this.filteredArr.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage)
+    }
+  },
+  mounted () {
+    this.$store.dispatch('getJson')
+    this.filteredArr = this.$store.state.holidays.jsonData
+  },
+  methods: {
+    filter () {
       this.filteredArr = this.$store.state.holidays.jsonData
-    },
-    methods: {
-      filter() {
-        this.filteredArr = this.$store.state.holidays.jsonData
-        if (this.filterValue !== '') {
-          this.filteredArr = this.filteredArr.filter(item => item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase())
-          )
+      if (this.filterValue !== '') {
+        this.filteredArr = this.filteredArr.filter(item => item.holidayName.toUpperCase().includes(this.filterValue.toUpperCase())
+        )
+      }
+      if (this.filterDate !== null) {
+        if (this.filterDate[0] !== null && this.filterDate[1] !== null) {
+          this.filteredArr = this.filteredArr.filter(item => {
+            return (Date.parse(item.date) >= Date.parse(this.filterDate[0]) && Date.parse(item.date) <= Date.parse(this.filterDate[1]))
+          })
         }
-        if (this.filterDate !==null) {
-          if (this.filterDate[0] !== null && this.filterDate[1] !== null) {
-            this.filteredArr = this.filteredArr.filter(item => {
-              return (Date.parse(item.date) >= Date.parse(this.filterDate[0]) && Date.parse(item.date) <= Date.parse(this.filterDate[1]))
-            })
-          }
-        }
-      },
-      breakSort() {
-        function compare(a, b) {
-          if (a.index < b.index) return -1
-          if (a.index > b.index) return 1
-          return 0
-        }
-        this.sortValue = 'по умолчанию'
-        this.filteredArr.sort(compare)
-      },
-      upSort() {
-        function compare(a, b) {
-          if (a.date < b.date) return -1
-          if (a.date > b.date) return 1
-          return 0
-        }
-        this.sortValue = 'по возрастанию даты'
-        this.filteredArr.sort(compare)
-      },
-      downSort() {
-        function compare(a, b) {
-          if (a.date < b.date) return 1
-          if (a.date > b.date) return -1
-          return 0
-        }
-
-        this.sortValue = 'по убыванию даты'
-        this.filteredArr.sort(compare)
       }
     },
+    breakSort () {
+      function compare (a, b) {
+        if (a.index < b.index) return -1
+        if (a.index > b.index) return 1
+        return 0
+      }
+      this.sortValue = 'по умолчанию'
+      this.filteredArr.sort(compare)
+    },
+    upSort () {
+      function compare (a, b) {
+        if (a.date < b.date) return -1
+        if (a.date > b.date) return 1
+        return 0
+      }
+      this.sortValue = 'по возрастанию даты'
+      this.filteredArr.sort(compare)
+    },
+    downSort () {
+      function compare (a, b) {
+        if (a.date < b.date) return 1
+        if (a.date > b.date) return -1
+        return 0
+      }
+
+      this.sortValue = 'по убыванию даты'
+      this.filteredArr.sort(compare)
+    }
   }
+}
 </script>
 
 <style lang="scss">
-    @import '../../node_modules/vue2-datepicker/index.css';
-    @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-    @import '../../node_modules/bootstrap-vue/src/index.scss';
+  @import "../../node_modules/vue2-datepicker/index.css";
+  @import "../../node_modules/bootstrap/dist/css/bootstrap.css";
+  @import "../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 
     h1 {
         font-size: 2em;

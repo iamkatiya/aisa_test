@@ -2,6 +2,7 @@
   <transition name="modal-fade">
     <div
       class="feedback-form"
+      v-changeScroll
     >
       <form
         v-if="loginForm"
@@ -169,41 +170,41 @@
   </transition>
 </template>
 <script>
-  import {required} from 'vuelidate/lib/validators'
+import {required} from 'vuelidate/lib/validators'
 
-  export default {
-    name: 'ModalFeedback',
-    data() {
-      return {
-        loginForm: true,
-        eyeActive: true,
-        createPassword: '',
-        loginPassword: ''
-      }
-    },
-    validations: {
-      handling: {
-        login: {
-          required
-        },
-        password: {
-          required
-        }
-      }
-    },
-    methods: {
-      closeSignModal () {
-        this.$emit('closeModal');
+export default {
+  name: 'ModalFeedback',
+  data () {
+    return {
+      loginForm: true,
+      eyeActive: true,
+      createPassword: '',
+      loginPassword: ''
+    }
+  },
+  validations: {
+    handling: {
+      login: {
+        required
       },
-      generatePass() {
-        var generator = require('generate-password');
-        this.createPassword = generator.generate({
-          length: 10,
-          numbers: true
-        });
+      password: {
+        required
       }
     }
+  },
+  methods: {
+    closeSignModal () {
+      this.$emit('closeModal')
+    },
+    generatePass () {
+      var generator = require('generate-password')
+      this.createPassword = generator.generate({
+        length: 10,
+        numbers: true
+      })
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>

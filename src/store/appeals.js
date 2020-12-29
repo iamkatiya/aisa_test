@@ -9,5 +9,4 @@ const appeals = {
   }
 }
 
-
 export default appeals

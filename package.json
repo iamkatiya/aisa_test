@@ -13,6 +13,7 @@
     "bootstrap-vue": "^2.21.1",
     "core-js": "^3.6.5",
     "generate-password": "^1.5.1",
+    "less-loader": "^7.2.1",
     "sass-loader": "^10.1.0",
     "vue": "^2.6.12",
     "vue-owl-carousel2": "^2.0.7",

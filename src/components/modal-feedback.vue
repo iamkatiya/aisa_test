@@ -2,6 +2,7 @@
   <transition name="modal-fade">
     <div
       class="feedback-form"
+      v-changeScroll
     >
       <form
         class="feedback-form__window"
@@ -111,56 +112,56 @@
   </transition>
 </template>
 <script>
-  import {required} from 'vuelidate/lib/validators'
+import {required} from 'vuelidate/lib/validators'
 
-  export default {
-    name: 'ModalFeedback',
-    data() {
-      return {
-        errorMsg: false,
-        handling: {
-          name: '',
-          text: '',
-          email: '',
-          phone: '',
-          file: '',
-          communication: []
-        }
-      }
-    },
-    validations: {
+export default {
+  name: 'ModalFeedback',
+  data () {
+    return {
+      errorMsg: false,
       handling: {
-        name: {
-          required
-        },
-        text: {
-          required
-        },
-        phone: {
-          required
-        }
+        name: '',
+        text: '',
+        email: '',
+        phone: '',
+        file: '',
+        communication: []
       }
+    }
+  },
+  validations: {
+    handling: {
+      name: {
+        required
+      },
+      text: {
+        required
+      },
+      phone: {
+        required
+      }
+    }
+  },
+  methods: {
+    closeModal () {
+      this.$emit('closeModal')
     },
-    methods: {
-      closeModal() {
-        this.$emit('closeModal');
-      },
-      sendHandling() {
-        this.$v.$touch()
-        if (this.$v.$invalid) {
-          this.errorMsg = true
-          setTimeout(() => {
-            this.errorMsg = false
-          }, 1000)
-        } else {
-          this.$store.commit('newFormResult', this.handling)
-          this.handling = {}
-          this.handling.communication = []
-          this.$emit('closeModal');
-        }
-      },
+    sendHandling () {
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        this.errorMsg = true
+        setTimeout(() => {
+          this.errorMsg = false
+        }, 1000)
+      } else {
+        this.$store.commit('newFormResult', this.handling)
+        this.handling = {}
+        this.handling.communication = []
+        this.$emit('closeModal')
+      }
     }
   }
+}
 </script>
 
 <style lang="scss">

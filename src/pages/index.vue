@@ -9,23 +9,22 @@
 </template>
 
 <script>
-  import headerNav from '../components/header.vue'
-  import banner from '../components/banner.vue'
-  import extra from '../components/extra.vue'
-  import footerNav from '../components/footer.vue'
+import headerNav from '../components/header.vue'
+import banner from '../components/banner.vue'
+import extra from '../components/extra.vue'
+import footerNav from '../components/footer.vue'
 
-  export default {
-    name: 'Index',
-    components: {
-      headerNav,
-      banner,
-      extra,
-      footerNav
-    }
+export default {
+  name: 'Index',
+  components: {
+    headerNav,
+    banner,
+    extra,
+    footerNav
   }
+}
 </script>
 
 <style>
-
 
 </style>
