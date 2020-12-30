@@ -228,6 +228,7 @@ export default {
               this.loginError = false
             }, 2000)
             this.loginError = true
+            console.log('test!')
           }
         })
     }
