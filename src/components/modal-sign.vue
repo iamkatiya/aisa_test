@@ -7,6 +7,8 @@
       <form
         v-if="loginForm"
         class="feedback-form__window feedback-form__sign"
+        method="post"
+        action="/login"
       >
         <div class="feedback-form__title sign-form__title">
           Вход в систему
@@ -219,16 +221,24 @@ export default {
       })
     },
     logIn () {
-      axios.post('http://localhost:3000/test', {login: this.loginData.userLogin, password: this.loginData.loginPassword})
+      let username = this.loginData.userLogin
+      let password = this.loginData.loginPassword
+      const axiosConfig = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+          username,
+          password,
+      };
+      axios.post('http://localhost:3000/login', axiosConfig)
         .then((response) => {
-          if (response.data === 'success') {
+          if (response.data === 'Success redaktor') {
             this.$router.push('lk')
           } else {
             setTimeout(() => {
               this.loginError = false
             }, 2000)
             this.loginError = true
-            console.log('test!')
           }
         })
     }

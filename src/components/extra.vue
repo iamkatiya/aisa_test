@@ -107,7 +107,6 @@
             }
             &__reviews {
                 width: 100%;
-                margin-left: 0;
             }
         }
     }
