@@ -230,7 +230,7 @@ export default {
           username,
           password,
       };
-      axios.post('http://localhost:3000/login', axiosConfig)
+      axios.post('/login', axiosConfig)
         .then((response) => {
           if (response.data === 'Success redaktor') {
             this.$router.push('lk')
