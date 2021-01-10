@@ -240,6 +240,7 @@ export default {
             }, 2000)
             this.loginError = true
           }
+          console.log('success')
         })
     }
   }
