@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import holidays from './holidays'
 import appeals from './appeals'
+import user from './user'
 import '../main'
 import { BootstrapVue, BPagination } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
@@ -11,6 +12,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules: {
     appeals: appeals,
-    holidays: holidays
+    holidays: holidays,
+    user: user
   }
 })

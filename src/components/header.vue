@@ -44,6 +44,14 @@
         <img src="@/assets/phone.svg">
       </div>
       <button
+        v-if="loginUser"
+        class="header__signIn"
+        @click="logout"
+      >
+        Выйти
+      </button>
+      <button
+        v-else
         class="header__signIn"
         @click="isSignModal = true"
       >
@@ -104,7 +112,8 @@ export default {
     return {
       burgerMenu: false,
       isVisibleFeedback: false,
-      isSignModal: false
+      isSignModal: false,
+      loginUser: false
     }
   },
   created () {
@@ -114,6 +123,15 @@ export default {
         this.isVisibleFeedback = false
         this.isSignModal = false
       }
+    }
+    if(this.$store.state.user.userData.length !== 0) {
+      this.loginUser = true
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.commit('newUserData', '')
+      this.$router.push('/')
     }
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <div>
     <header-nav />
-    <section class="lk container">
+    <section
+      v-if="loginUser"
+      class="lk container">
       <h2 class="lk__head">
         Личный кабинет
       </h2>
@@ -15,6 +17,7 @@
           </label>
           <input
             id="lkFirstName"
+            v-model="userFirstName"
             type="text"
             placeholder="Иван"
           >
@@ -25,12 +28,19 @@
           </label>
           <input
             id="lkLastName"
+            v-model="userLastName"
             type="text"
             placeholder="Иванов"
           >
         </div>
       </div>
     </section>
+    <div
+      v-else
+      class="lk container"
+    >
+      Данная страница недоступна для неавторизованных пользователей :(
+    </div>
     <footer-nav />
   </div>
 </template>
@@ -44,6 +54,21 @@
     components: {
       headerNav,
       footerNav
+    },
+    data() {
+      return {
+        userFirstName: '',
+        userLastName: '',
+        loginUser: false
+      }
+    },
+    created() {
+      console.log(this.$store.state.user.userData)
+      if(this.$store.state.user.userData.length !== 0) {
+        this.loginUser = true
+      }
+      this.userFirstName = this.$store.state.user.userData.userFirstname
+      this.userLastName = this.$store.state.user.userData.userLastname
     }
   }
 </script>

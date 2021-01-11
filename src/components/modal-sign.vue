@@ -256,15 +256,16 @@ export default {
           username,
           password,
       };
-      axios.post('/login', axiosConfig)
+      axios.post('http://localhost:3000/login', axiosConfig)
         .then((response) => {
-          if (response.data === 'Success auth') {
-            this.$router.push('lk')
-          } else {
+          if (response.data === 'not found') {
             setTimeout(() => {
               this.loginError = false
             }, 2000)
             this.loginError = true
+          } else {
+            this.$store.commit('newUserData', response.data)
+            this.$router.push('lk')
           }
         })
     },
@@ -289,9 +290,9 @@ export default {
           username,
           password
         };
-        axios.post('/register', registerData)
+        axios.post('http://localhost:3000/register', registerData)
           .then((response) => {
-            console.log(response)
+            this.$router.push('lk')
           })
       }
     }
