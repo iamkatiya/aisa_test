@@ -84,6 +84,8 @@
       <form
         v-else
         class="feedback-form__window feedback-form__sign"
+        method="post"
+        action="/register"
       >
         <div class="feedback-form__title">
           Регистрация
@@ -94,6 +96,7 @@
           </label>
           <input
             id="loginFirstName"
+            v-model="registerData.userFirstname"
             type="text"
             placeholder="Иван"
             trim
@@ -105,6 +108,7 @@
           </label>
           <input
             id="loginLastName"
+            v-model="registerData.userLastname"
             type="text"
             placeholder="Иванов"
             trim
@@ -116,6 +120,7 @@
           </label>
           <input
             id="loginEmail"
+            v-model="registerData.userEmail"
             type="email"
             placeholder="example@mail.ru"
             trim
@@ -127,7 +132,7 @@
           </label>
           <input
             id="loginPass"
-            v-model="createPassword"
+            v-model="registerData.userPassword"
             :type="eyeActive ? 'password' : 'text'"
             placeholder="Не менее 6 символов"
             trim
@@ -152,9 +157,16 @@
             Сгенерировать
           </div>
         </div>
+        <div
+          v-if="registerError"
+          class="feedback-form__error"
+        >
+          Необходимо заполнить все поля!
+        </div>
         <button
-          type="submit"
+          type="button"
           class="feedback-form__btn about-content__btn"
+          @click="registration"
         >
           Зарегистрироваться
         </button>
@@ -189,24 +201,38 @@ export default {
     return {
       loginForm: true,
       eyeActive: true,
-      createPassword: '',
       loginError: false,
+      registerError: false,
       loginData: [
         {
           userLogin: '',
           loginPassword: ''
         }
       ],
+      registerData: [
+        {
+          userFirstname: '',
+          userLastname: '',
+          userEmail: '',
+          userPassword: ''
+        }
+      ]
     }
   },
   validations: {
-    handling: {
-      login: {
+    registerData: {
+      userFirstname: {
         required
       },
-      password: {
+      userLastname: {
         required
-      }
+      },
+      userEmail: {
+        required
+      },
+      userPassword: {
+        required
+      },
     }
   },
   methods: {
@@ -215,7 +241,7 @@ export default {
     },
     generatePass () {
       var generator = require('generate-password')
-      this.createPassword = generator.generate({
+      this.registerData.userPassword = generator.generate({
         length: 10,
         numbers: true
       })
@@ -232,7 +258,7 @@ export default {
       };
       axios.post('/login', axiosConfig)
         .then((response) => {
-          if (response.data === 'Success redaktor') {
+          if (response.data === 'Success auth') {
             this.$router.push('lk')
           } else {
             setTimeout(() => {
@@ -240,8 +266,34 @@ export default {
             }, 2000)
             this.loginError = true
           }
-          console.log('success')
         })
+    },
+    registration () {
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        setTimeout(() => {
+          this.registerError = false
+        }, 2000)
+        this.registerError = true
+      } else {
+        let userFirstname = this.registerData.userFirstname
+        let userLastname = this.registerData.userLastname
+        let username = this.registerData.userEmail
+        let password = this.registerData.userPassword
+        const registerData = {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          userFirstname,
+          userLastname,
+          username,
+          password
+        };
+        axios.post('/register', registerData)
+          .then((response) => {
+            console.log(response)
+          })
+      }
     }
   }
 }
