@@ -81,6 +81,17 @@
           >
         </div>
       </form>
+      <transition
+        v-else-if="successRegistration"
+        name="modal-fade">
+        <div class="modal">
+          <div class="modal__window modal-content">
+            <div class="modal-content__text">
+              Регистрация прошла успешно! Используйте эти данные для входа на сайт.
+            </div>
+          </div>
+        </div>
+      </transition>
       <form
         v-else
         class="feedback-form__window feedback-form__sign"
@@ -203,6 +214,7 @@ export default {
       eyeActive: true,
       loginError: false,
       registerError: false,
+      successRegistration: false,
       loginData: [
         {
           userLogin: '',
@@ -256,7 +268,7 @@ export default {
           username,
           password,
       };
-      axios.post('/login', axiosConfig)
+      axios.post('http://localhost:3000/login', axiosConfig)
         .then((response) => {
           if (response.data === 'not found') {
             setTimeout(() => {
@@ -290,9 +302,13 @@ export default {
           username,
           password
         };
-        axios.post('/register', registerData)
+        axios.post('http://localhost:3000/register', registerData)
           .then((response) => {
-            this.loginForm = true
+            setTimeout(() => {
+              this.successRegistration = false
+              this.loginForm = true
+            }, 2500)
+            this.successRegistration = true
           })
       }
     }
@@ -315,6 +331,41 @@ export default {
     &__error {
       color: #b20000;
     }
+  }
+  .modal {
+      display: flex;
+      z-index: 1;
+      position: fixed;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      top: 0;
+      left: 0;
+      &__window {
+          display: flex;
+          position: relative;
+          flex-wrap: wrap;
+          z-index: 1;
+          padding: 1rem;
+          width: 300px;
+          height: 250px;
+          justify-content: center;
+          align-items: center;
+          background: #fff;
+          margin: 1rem auto;
+          border-radius: .3rem;
+          box-shadow: 0 3px 7px 0 rgba(0, 0, 0, .2);
+          box-sizing: border-box;
+      }
+      &-content__close {
+          position: absolute;
+          cursor: pointer;
+          width: 35px;
+          right: 10px;
+          top: 10px
+      }
   }
   @media (max-width: 1650px) {
     .create-pass {

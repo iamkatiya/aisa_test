@@ -2,7 +2,6 @@
   <div>
     <header-nav />
     <section
-      v-if="loginUser"
       class="lk container">
       <h2 class="lk__head">
         Личный кабинет
@@ -35,12 +34,6 @@
         </div>
       </div>
     </section>
-    <div
-      v-else
-      class="lk container"
-    >
-      Данная страница недоступна для неавторизованных пользователей :(
-    </div>
     <footer-nav />
   </div>
 </template>
@@ -58,14 +51,14 @@
     data() {
       return {
         userFirstName: '',
-        userLastName: '',
-        loginUser: false
+        userLastName: ''
       }
     },
     created() {
-      console.log(this.$store.state.user.userData)
       if(this.$store.state.user.userData.length !== 0) {
-        this.loginUser = true
+        // this.loginUser = true
+      } else {
+        this.$router.push('/')
       }
       this.userFirstName = this.$store.state.user.userData.userFirstname
       this.userLastName = this.$store.state.user.userData.userLastname

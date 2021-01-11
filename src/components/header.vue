@@ -131,6 +131,7 @@ export default {
   methods: {
     logout() {
       this.$store.commit('newUserData', '')
+      this.loginUser = false
       this.$router.push('/')
     }
   }
