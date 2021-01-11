@@ -256,7 +256,7 @@ export default {
           username,
           password,
       };
-      axios.post('http://localhost:3000/login', axiosConfig)
+      axios.post('/login', axiosConfig)
         .then((response) => {
           if (response.data === 'not found') {
             setTimeout(() => {
@@ -290,9 +290,9 @@ export default {
           username,
           password
         };
-        axios.post('http://localhost:3000/register', registerData)
+        axios.post('/register', registerData)
           .then((response) => {
-            this.$router.push('lk')
+            this.loginForm = true
           })
       }
     }
